@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty & Staff - REDES Pharmacy College | Premier Pharmaceutical Education</title>
+    <meta name="description" content="Meet our esteemed faculty members at REDES Pharmacy College. Explore their qualifications, research interests, and contributions to pharmaceutical education.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --accent: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f9ff;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+        
+        .floating-dots {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .dot {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.1);
+            animation: float 15s infinite linear;
+        }
+        
+        .pulse-dot {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.15);
+            animation: pulse 4s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-20px) translateX(10px); }
+            50% { transform: translateY(-10px) translateX(20px); }
+            75% { transform: translateY(-15px) translateX(5px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.5); opacity: 0.3; }
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.4s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .text-gradient {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+        
+        .btn-glow:hover::before {
+            left: 100%;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .floating-shape {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.1;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .faculty-card {
+            transition: all 0.4s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .faculty-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .faculty-image {
+            transition: all 0.5s ease;
+        }
+        
+        .faculty-card:hover .faculty-image {
+            transform: scale(1.05);
+        }
+        
+        .faculty-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+        
+        .faculty-card:hover .faculty-overlay {
+            transform: translateY(0);
+        }
+        
+        .dept-tab {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .dept-tab.active {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white;
+        }
+        
+        .search-container {
+            position: relative;
+        }
+        
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 10;
+            display: none;
+        }
+        
+        .search-result-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e5e7eb;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        
+        .search-result-item:hover {
+            background: #f3f4f6;
+        }
+        
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faculty-details-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faculty-details-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        
+        .faculty-details-modal.active .modal-content {
+            transform: scale(1);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            background: rgba(0, 0, 0, 0.7);
+            transform: scale(1.1);
+        }
+        
+        .stats-card {
+            transition: all 0.3s ease;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Accessibility improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Focus styles for keyboard navigation */
+        a:focus, button:focus {
+            outline: 2px solid #2563eb;
+            outline-offset: 2px;
+        }
+        
+        /* Loading optimization */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Performance improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Animated Background Elements -->
+    <div class="floating-dots" id="floatingDots" aria-hidden="true"></div>
+    <div class="pulse-dots" id="pulseDots" aria-hidden="true"></div>
+    
+    <!-- Floating SVG Shapes -->
+    <svg class="floating-shape" width="200" height="200" style="top: 10%; left: 5%;" viewBox="0 0 200 200" aria-hidden="true">
+        <path fill="none" stroke="#2563eb" stroke-width="2" d="M40,100 C40,60 80,40 100,40 C120,40 160,60 160,100 C160,140 120,160 100,160 C80,160 40,140 40,100 Z" />
+    </svg>
+    
+    <svg class="floating-shape" width="150" height="150" style="top: 70%; right: 8%;" viewBox="0 0 150 150" aria-hidden="true">
+        <polygon fill="none" stroke="#10b981" stroke-width="2" points="75,25 125,75 75,125 25,75" />
+    </svg>
+
+   <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-md transition-all duration-500">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-green-500 rounded-xl flex items-center justify-center shadow-lg glow">
+                        <i class="fas fa-pills text-white text-xl" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">REDES <span class="text-blue-600">Pharmacy</span></h1>
+                        <p class="text-xs text-gray-600">College of Pharmaceutical Sciences</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex space-x-8" aria-label="Main navigation">
+                    <a href="index.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                    <a href="about.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    
+                    <div class="relative group">
+                        <a href="#" class="nav-link text-gray-700 hover:text-blue-600 font-medium flex items-center">
+                            Departments <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                        <div class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                            <a href="department.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Departments</a>
+                            <a href="faculty.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Faculty</a>
+                            <a href="infrastucture.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Infrastructure</a>
+                        </div>
+                    </div>
+
+
+                    <a href="courses.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Courses</a>
+                    <a href="research.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Research</a>
+                    <a href="admissions.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Admissions</a>
+                    <a href="news.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">News & Events</a>
+                    <a href="contact.html" class="nav-link text-blue-600 font-medium" aria-current="page">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton" class="lg:hidden text-gray-700 focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <i class="fas fa-bars text-xl" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="hidden lg:hidden py-4 border-t border-gray-200 bg-white/95 backdrop-blur-sm rounded-lg mt-2 shadow-lg" aria-labelledby="mobileMenuButton">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">About</a>
+                    <a href="departments.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Departments</a>
+                    <a href="courses.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Courses</a>
+                    <a href="research.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Research</a>
+                    <a href="admissions.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Admissions</a>
+                    <a href="faculty.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Faculty</a>
+                    <a href="infrastructure.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Infrastructure</a>
+                    <a href="news.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">News & Events</a>
+                    <a href="contact.html" class="text-blue-600 font-medium py-2 px-4 rounded-lg bg-blue-50 transition-colors" aria-current="page">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="relative py-24 md:py-32 overflow-hidden bg-gradient-to-r from-blue-900/80 to-green-800/80 text-white" aria-labelledby="page-title">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')" role="img" aria-label="Faculty members collaborating in a laboratory"></div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 id="page-title" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Meet Our Esteemed Faculty</h1>
+            <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">Dedicated educators, researchers, and mentors shaping the future of pharmaceutical sciences</p>
+        </div>
+    </section>
+
+    <!-- Faculty Statistics -->
+    <section class="py-16 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="stats-card bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl shadow-md text-center">
+                    <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-user-graduate text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-800 mb-2">85+</h3>
+                    <p class="text-gray-600">Faculty Members</p>
+                </div>
+
+                <div class="stats-card bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-2xl shadow-md text-center">
+                    <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-trophy text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-800 mb-2">25+</h3>
+                    <p class="text-gray-600">Awards & Honors</p>
+                </div>
+
+                <div class="stats-card bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-2xl shadow-md text-center">
+                    <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-flask text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-800 mb-2">150+</h3>
+                    <p class="text-gray-600">Research Projects</p>
+                </div>
+
+                <div class="stats-card bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-2xl shadow-md text-center">
+                    <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-book text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-800 mb-2">500+</h3>
+                    <p class="text-gray-600">Publications</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty Filter & Search -->
+    <section class="py-12 bg-gradient-to-br from-blue-50 to-green-50 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <!-- Department Tabs -->
+                <div class="w-full md:w-auto">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">Filter by Department:</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <div class="dept-tab active px-4 py-2 rounded-full bg-white shadow-sm border border-gray-200" data-dept="all">All Faculty</div>
+                        <div class="dept-tab px-4 py-2 rounded-full bg-white shadow-sm border border-gray-200" data-dept="pharmaceutics">Pharmaceutics</div>
+                        <div class="dept-tab px-4 py-2 rounded-full bg-white shadow-sm border border-gray-200" data-dept="pharmaceutical-chemistry">Pharmaceutical Chemistry</div>
+                        <div class="dept-tab px-4 py-2 rounded-full bg-white shadow-sm border border-gray-200" data-dept="pharmacognosy">Pharmacognosy</div>
+                        <div class="dept-tab px-4 py-2 rounded-full bg-white shadow-sm border border-gray-200" data-dept="pharmacology">Pharmacology</div>
+                        <div class="dept-tab px-4 py-2 rounded-full bg-white shadow-sm border border-gray-200" data-dept="pharmacy-practice">Pharmacy Practice</div>
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="w-full md:w-80 search-container">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">Search Faculty:</h3>
+                    <div class="relative">
+                        <input type="text" id="facultySearch" placeholder="Search by name, specialization..." class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
+                    </div>
+                    <div class="search-results" id="searchResults"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty Grid -->
+    <section class="py-20 bg-white relative overflow-hidden" aria-labelledby="faculty-grid-title">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h2 id="faculty-grid-title" class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-12 text-center">Our Faculty Members</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="facultyGrid">
+                <!-- Faculty Member 1 -->
+                <div class="faculty-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-dept="pharmaceutics">
+                    <div class="overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                             alt="Dr. Rajesh Kumar" class="faculty-image w-full h-64 object-cover">
+                        <div class="faculty-overlay">
+                            <h4 class="text-lg font-bold mb-2">Research Interests</h4>
+                            <p class="text-sm">Novel drug delivery systems, Nanotechnology in pharmaceutics, Controlled release formulations</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Dr. Rajesh Kumar</h3>
+                        <p class="text-blue-600 font-semibold mb-2">Professor & Head</p>
+                        <p class="text-gray-600 text-sm mb-3">Ph.D. (Pharmaceutics), M.Pharm, B.Pharm</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>rajesh.kumar@redespharmacy.edu.in</span>
+                        </div>
+                        <button class="view-profile-btn mt-4 text-blue-600 font-medium text-sm hover:text-blue-800 transition-colors" data-id="1">
+                            View Full Profile <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Faculty Member 2 -->
+                <div class="faculty-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-dept="pharmaceutical-chemistry">
+                    <div class="overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Dr. Priya Sharma" class="faculty-image w-full h-64 object-cover">
+                        <div class="faculty-overlay">
+                            <h4 class="text-lg font-bold mb-2">Research Interests</h4>
+                            <p class="text-sm">Medicinal chemistry, Drug design and synthesis, Analytical method development</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Dr. Priya Sharma</h3>
+                        <p class="text-blue-600 font-semibold mb-2">Professor</p>
+                        <p class="text-gray-600 text-sm mb-3">Ph.D. (Pharmaceutical Chemistry), M.Pharm, B.Pharm</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>priya.sharma@redespharmacy.edu.in</span>
+                        </div>
+                        <button class="view-profile-btn mt-4 text-blue-600 font-medium text-sm hover:text-blue-800 transition-colors" data-id="2">
+                            View Full Profile <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Faculty Member 3 -->
+                <div class="faculty-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-dept="pharmacognosy">
+                    <div class="overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Dr. Anjali Reddy" class="faculty-image w-full h-64 object-cover">
+                        <div class="faculty-overlay">
+                            <h4 class="text-lg font-bold mb-2">Research Interests</h4>
+                            <p class="text-sm">Natural product research, Ethnobotany, Phytochemistry, Herbal drug standardization</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Dr. Anjali Reddy</h3>
+                        <p class="text-blue-600 font-semibold mb-2">Associate Professor</p>
+                        <p class="text-gray-600 text-sm mb-3">Ph.D. (Pharmacognosy), M.Pharm, B.Pharm</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>anjali.reddy@redespharmacy.edu.in</span>
+                        </div>
+                        <button class="view-profile-btn mt-4 text-blue-600 font-medium text-sm hover:text-blue-800 transition-colors" data-id="3">
+                            View Full Profile <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Faculty Member 4 -->
+                <div class="faculty-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-dept="pharmacology">
+                    <div class="overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Dr. Arjun Kapoor" class="faculty-image w-full h-64 object-cover">
+                        <div class="faculty-overlay">
+                            <h4 class="text-lg font-bold mb-2">Research Interests</h4>
+                            <p class="text-sm">Cardiovascular pharmacology, Neuropharmacology, Drug safety and toxicology</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Dr. Arjun Kapoor</h3>
+                        <p class="text-blue-600 font-semibold mb-2">Professor</p>
+                        <p class="text-gray-600 text-sm mb-3">Ph.D. (Pharmacology), M.Pharm, B.Pharm</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>arjun.kapoor@redespharmacy.edu.in</span>
+                        </div>
+                        <button class="view-profile-btn mt-4 text-blue-600 font-medium text-sm hover:text-blue-800 transition-colors" data-id="4">
+                            View Full Profile <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Faculty Member 5 -->
+                <div class="faculty-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-dept="pharmacy-practice">
+                    <div class="overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" 
+                             alt="Dr. Sanjay Verma" class="faculty-image w-full h-64 object-cover">
+                        <div class="faculty-overlay">
+                            <h4 class="text-lg font-bold mb-2">Research Interests</h4>
+                            <p class="text-sm">Clinical pharmacy, Pharmacotherapy, Patient safety, Medication adherence</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Dr. Sanjay Verma</h3>
+                        <p class="text-blue-600 font-semibold mb-2">Associate Professor</p>
+                        <p class="text-gray-600 text-sm mb-3">Ph.D. (Pharmacy Practice), Pharm.D, M.Pharm</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>sanjay.verma@redespharmacy.edu.in</span>
+                        </div>
+                        <button class="view-profile-btn mt-4 text-blue-600 font-medium text-sm hover:text-blue-800 transition-colors" data-id="5">
+                            View Full Profile <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Faculty Member 6 -->
+                <div class="faculty-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-dept="pharmaceutics">
+                    <div class="overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1551836026-d5cbc8396c36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Dr. Meera Patel" class="faculty-image w-full h-64 object-cover">
+                        <div class="faculty-overlay">
+                            <h4 class="text-lg font-bold mb-2">Research Interests</h4>
+                            <p class="text-sm">Pharmaceutical nanotechnology, Targeted drug delivery, Biopharmaceutics</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Dr. Meera Patel</h3>
+                        <p class="text-blue-600 font-semibold mb-2">Assistant Professor</p>
+                        <p class="text-gray-600 text-sm mb-3">Ph.D. (Pharmaceutics), M.Pharm, B.Pharm</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>meera.patel@redespharmacy.edu.in</span>
+                        </div>
+                        <button class="view-profile-btn mt-4 text-blue-600 font-medium text-sm hover:text-blue-800 transition-colors" data-id="6">
+                            View Full Profile <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Faculty Member 7 -->
+                <div class="faculty-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-dept="pharmaceutical-chemistry">
+                    <div class="overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1594824947933-d0501ba2fe65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" 
+                             alt="Dr. Rajiv Malhotra" class="faculty-image w-full h-64 object-cover">
+                        <div class="faculty-overlay">
+                            <h4 class="text-lg font-bold mb-2">Research Interests</h4>
+                            <p class="text-sm">Organic synthesis, Computational chemistry, Structure-activity relationships</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Dr. Rajiv Malhotra</h3>
+                        <p class="text-blue-600 font-semibold mb-2">Professor</p>
+                        <p class="text-gray-600 text-sm mb-3">Ph.D. (Pharmaceutical Chemistry), M.Pharm, B.Pharm</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>rajiv.malhotra@redespharmacy.edu.in</span>
+                        </div>
+                        <button class="view-profile-btn mt-4 text-blue-600 font-medium text-sm hover:text-blue-800 transition-colors" data-id="7">
+                            View Full Profile <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Faculty Member 8 -->
+                <div class="faculty-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-dept="pharmacology">
+                    <div class="overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" 
+                             alt="Dr. Neha Gupta" class="faculty-image w-full h-64 object-cover">
+                        <div class="faculty-overlay">
+                            <h4 class="text-lg font-bold mb-2">Research Interests</h4>
+                            <p class="text-sm">Neuropharmacology, Psychopharmacology, Drug addiction mechanisms</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Dr. Neha Gupta</h3>
+                        <p class="text-blue-600 font-semibold mb-2">Assistant Professor</p>
+                        <p class="text-gray-600 text-sm mb-3">Ph.D. (Pharmacology), M.Pharm, B.Pharm</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>neha.gupta@redespharmacy.edu.in</span>
+                        </div>
+                        <button class="view-profile-btn mt-4 text-blue-600 font-medium text-sm hover:text-blue-800 transition-colors" data-id="8">
+                            View Full Profile <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Faculty Member 9 -->
+                <div class="faculty-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-dept="pharmacy-practice">
+                    <div class="overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                             alt="Dr. Vikram Joshi" class="faculty-image w-full h-64 object-cover">
+                        <div class="faculty-overlay">
+                            <h4 class="text-lg font-bold mb-2">Research Interests</h4>
+                            <p class="text-sm">Clinical trials, Pharmacoepidemiology, Health outcomes research</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Dr. Vikram Joshi</h3>
+                        <p class="text-blue-600 font-semibold mb-2">Professor</p>
+                        <p class="text-gray-600 text-sm mb-3">Ph.D. (Pharmacy Practice), Pharm.D, M.Pharm</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>vikram.joshi@redespharmacy.edu.in</span>
+                        </div>
+                        <button class="view-profile-btn mt-4 text-blue-600 font-medium text-sm hover:text-blue-800 transition-colors" data-id="9">
+                            View Full Profile <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button id="loadMoreBtn" class="btn-glow bg-gradient-to-r from-blue-600 to-green-500 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    Load More Faculty <i class="fas fa-chevron-down ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-blue-50 to-green-50 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-gradient-to-r from-blue-600 to-green-500 rounded-2xl p-8 md:p-12 text-center text-white shadow-2xl">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Join Our Esteemed Faculty</h2>
+                <p class="text-blue-100 max-w-2xl mx-auto mb-8 text-lg">Become part of our dynamic academic community and contribute to shaping the future of pharmaceutical education and research.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#" class="btn-glow bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                        View Open Positions <i class="fas fa-briefcase ml-2"></i>
+                    </a>
+                    <a href="#" class="btn-glow bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:bg-white/10">
+                        Submit Your CV <i class="fas fa-file-alt ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty Details Modal -->
+    <div class="faculty-details-modal" id="facultyModal">
+        <div class="modal-content">
+            <div class="close-modal" id="closeModal">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="p-8" id="modalContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-green-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-pills text-white text-xl" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold">REDES Pharmacy</h2>
+                            <p class="text-xs text-gray-400">College of Pharmaceutical Sciences</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Premier institution for pharmaceutical education and research since 1992.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110" aria-label="Visit our Facebook page">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110" aria-label="Visit our Twitter page">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110" aria-label="Visit our LinkedIn page">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110" aria-label="Visit our Instagram page">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="departments.html" class="text-gray-400 hover:text-white transition-colors duration-300">Departments</a></li>
+                        <li><a href="faculty.html" class="text-gray-400 hover:text-white transition-colors duration-300">Faculty</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Info</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-blue-500 mr-3 mt-1" aria-hidden="true"></i>
+                            <span class="text-gray-400">Pharmacy College Road, HYD, Telangana 500032</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-blue-500 mr-3" aria-hidden="true"></i>
+                            <span class="text-gray-400">+91 40 1234 5678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-blue-500 mr-3" aria-hidden="true"></i>
+                            <span class="text-gray-400">info@redespharmacy.edu.in</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates.</p>
+                    <form class="flex">
+                        <label for="email-newsletter" class="sr-only">Email address</label>
+                        <input id="email-newsletter" type="email" placeholder="Your email" class="px-4 py-3 w-full rounded-l-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="submit" class="bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 px-4 py-3 rounded-r-lg transition-colors duration-300" aria-label="Subscribe to newsletter">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 REDES Pharmacy College. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+            
+            // Update ARIA attributes
+            const isExpanded = menu.classList.contains('hidden') ? 'false' : 'true';
+            this.setAttribute('aria-expanded', isExpanded);
+            
+            // Change icon
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Create floating dots
+        const floatingDots = document.getElementById('floatingDots');
+        const colors = ['rgba(37, 99, 235, 0.1)', 'rgba(16, 185, 129, 0.1)', 'rgba(139, 92, 246, 0.1)'];
+        
+        for (let i = 0; i < 40; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            
+            // Random properties
+            const size = Math.random() * 80 + 10;
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            const delay = Math.random() * 20;
+            const duration = Math.random() * 10 + 10;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            dot.style.width = `${size}px`;
+            dot.style.height = `${size}px`;
+            dot.style.left = `${left}%`;
+            dot.style.top = `${top}%`;
+            dot.style.background = color;
+            dot.style.animationDelay = `${delay}s`;
+            dot.style.animationDuration = `${duration}s`;
+            
+            floatingDots.appendChild(dot);
+        }
+
+        // Create pulse dots
+        const pulseDotsContainer = document.getElementById('pulseDots');
+        
+        for (let i = 0; i < 15; i++) {
+            const pulseDot = document.createElement('div');
+            pulseDot.classList.add('pulse-dot');
+            
+            // Random properties
+            const size = Math.random() * 100 + 20;
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            const delay = Math.random() * 5;
+            const duration = Math.random() * 3 + 3;
+            
+            pulseDot.style.width = `${size}px`;
+            pulseDot.style.height = `${size}px`;
+            pulseDot.style.left = `${left}%`;
+            pulseDot.style.top = `${top}%`;
+            pulseDot.style.animationDelay = `${delay}s`;
+            pulseDot.style.animationDuration = `${duration}s`;
+            
+            pulseDotsContainer.appendChild(pulseDot);
+        }
+
+        // Faculty Data
+        const facultyData = {
+            1: {
+                name: "Dr. Rajesh Kumar",
+                designation: "Professor & Head, Department of Pharmaceutics",
+                qualification: "Ph.D. (Pharmaceutics), M.Pharm, B.Pharm",
+                email: "rajesh.kumar@redespharmacy.edu.in",
+                department: "Pharmaceutics",
+                researchInterests: ["Novel drug delivery systems", "Nanotechnology in pharmaceutics", "Controlled release formulations", "Biopharmaceutics"],
+                experience: "18 years of teaching and research experience",
+                publications: "85+ research publications in peer-reviewed journals",
+                projects: "15+ funded research projects",
+                awards: ["Best Researcher Award 2020", "Young Scientist Award 2015", "Pharmacy Teacher of the Year 2019"],
+                image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+            },
+            2: {
+                name: "Dr. Priya Sharma",
+                designation: "Professor, Department of Pharmaceutical Chemistry",
+                qualification: "Ph.D. (Pharmaceutical Chemistry), M.Pharm, B.Pharm",
+                email: "priya.sharma@redespharmacy.edu.in",
+                department: "Pharmaceutical Chemistry",
+                researchInterests: ["Medicinal chemistry", "Drug design and synthesis", "Analytical method development", "Computational chemistry"],
+                experience: "16 years of teaching and research experience",
+                publications: "70+ research publications in peer-reviewed journals",
+                projects: "12+ funded research projects",
+                awards: ["Outstanding Faculty Award 2021", "Research Excellence Award 2018", "Best Paper Award 2019"],
+                image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            3: {
+                name: "Dr. Anjali Reddy",
+                designation: "Associate Professor, Department of Pharmacognosy",
+                qualification: "Ph.D. (Pharmacognosy), M.Pharm, B.Pharm",
+                email: "anjali.reddy@redespharmacy.edu.in",
+                department: "Pharmacognosy",
+                researchInterests: ["Natural product research", "Ethnobotany", "Phytochemistry", "Herbal drug standardization"],
+                experience: "14 years of teaching and research experience",
+                publications: "60+ research publications in peer-reviewed journals",
+                projects: "10+ funded research projects",
+                awards: ["Young Investigator Award 2020", "Best Teacher Award 2018", "Research Innovation Award 2017"],
+                image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            }
+        };
+
+        // Department Filter
+        const deptTabs = document.querySelectorAll('.dept-tab');
+        const facultyCards = document.querySelectorAll('.faculty-card');
+        
+        deptTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                deptTabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                const dept = this.getAttribute('data-dept');
+                
+                // Show/hide faculty cards based on department
+                facultyCards.forEach(card => {
+                    if (dept === 'all' || card.getAttribute('data-dept') === dept) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Search Functionality
+        const searchInput = document.getElementById('facultySearch');
+        const searchResults = document.getElementById('searchResults');
+        
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            
+            if (query.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+            
+            // Filter faculty based on search query
+            const filteredFaculty = Array.from(facultyCards).filter(card => {
+                const name = card.querySelector('h3').textContent.toLowerCase();
+                const designation = card.querySelector('.text-blue-600').textContent.toLowerCase();
+                const qualification = card.querySelector('.text-gray-600').textContent.toLowerCase();
+                
+                return name.includes(query) || designation.includes(query) || qualification.includes(query);
+            });
+            
+            // Display search results
+            if (filteredFaculty.length > 0) {
+                searchResults.innerHTML = '';
+                filteredFaculty.forEach(card => {
+                    const name = card.querySelector('h3').textContent;
+                    const designation = card.querySelector('.text-blue-600').textContent;
+                    
+                    const resultItem = document.createElement('div');
+                    resultItem.classList.add('search-result-item');
+                    resultItem.innerHTML = `
+                        <div class="font-medium">${name}</div>
+                        <div class="text-sm text-gray-600">${designation}</div>
+                    `;
+                    
+                    resultItem.addEventListener('click', function() {
+                        // Scroll to the faculty card
+                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        // Highlight the card temporarily
+                        card.style.boxShadow = '0 0 0 3px rgba(37, 99, 235, 0.5)';
+                        setTimeout(() => {
+                            card.style.boxShadow = '';
+                        }, 2000);
+                        
+                        searchResults.style.display = 'none';
+                        searchInput.value = '';
+                    });
+                    
+                    searchResults.appendChild(resultItem);
+                });
+                
+                searchResults.style.display = 'block';
+            } else {
+                searchResults.innerHTML = '<div class="search-result-item text-gray-500">No faculty members found</div>';
+                searchResults.style.display = 'block';
+            }
+        });
+
+        // Close search results when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                searchResults.style.display = 'none';
+            }
+        });
+
+        // Faculty Profile Modal
+        const facultyModal = document.getElementById('facultyModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalContent = document.getElementById('modalContent');
+        const viewProfileBtns = document.querySelectorAll('.view-profile-btn');
+        
+        viewProfileBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const facultyId = this.getAttribute('data-id');
+                const faculty = facultyData[facultyId];
+                
+                if (faculty) {
+                    modalContent.innerHTML = `
+                        <div class="flex flex-col md:flex-row gap-8">
+                            <div class="md:w-1/3">
+                                <img src="${faculty.image}" alt="${faculty.name}" class="w-full h-80 object-cover rounded-2xl shadow-lg">
+                            </div>
+                            <div class="md:w-2/3">
+                                <h2 class="text-3xl font-bold text-gray-800 mb-2">${faculty.name}</h2>
+                                <p class="text-blue-600 font-semibold text-lg mb-4">${faculty.designation}</p>
+                                
+                                <div class="mb-6">
+                                    <h3 class="text-xl font-bold text-gray-800 mb-3">Qualifications</h3>
+                                    <p class="text-gray-600">${faculty.qualification}</p>
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <h3 class="text-xl font-bold text-gray-800 mb-3">Research Interests</h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        ${faculty.researchInterests.map(interest => 
+                                            `<span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">${interest}</span>`
+                                        ).join('')}
+                                    </div>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-gray-800 mb-3">Experience</h3>
+                                        <p class="text-gray-600">${faculty.experience}</p>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-bold text-gray-800 mb-3">Contact</h3>
+                                        <div class="flex items-center text-gray-600 mb-2">
+                                            <i class="fas fa-envelope mr-2"></i>
+                                            <span>${faculty.email}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <h3 class="text-xl font-bold text-gray-800 mb-3">Publications & Projects</h3>
+                                    <p class="text-gray-600 mb-2">${faculty.publications}</p>
+                                    <p class="text-gray-600">${faculty.projects}</p>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-3">Awards & Honors</h3>
+                                    <ul class="list-disc list-inside text-gray-600">
+                                        ${faculty.awards.map(award => `<li>${award}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    facultyModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+        
+        closeModal.addEventListener('click', function() {
+            facultyModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modal when clicking outside
+        facultyModal.addEventListener('click', function(e) {
+            if (e.target === facultyModal) {
+                facultyModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Load More Faculty
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        let facultyCount = 9; // Starting count
+        
+        loadMoreBtn.addEventListener('click', function() {
+            // In a real application, this would fetch more data from a server
+            // For this demo, we'll just show an alert
+            alert('This would load more faculty members in a real application. This is a demo.');
+            
+            // You could implement actual loading logic here
+            // facultyCount += 6;
+            // loadFaculty(facultyCount);
+        });
+
+        // GSAP Animations
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Animate elements on scroll
+            gsap.utils.toArray('.faculty-card, .stats-card').forEach(element => {
+                gsap.from(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 80%',
+                        end: 'bottom 20%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: 'power2.out'
+                });
+            });
+
+            // Animate section titles
+            gsap.utils.toArray('.section-title').forEach(title => {
+                gsap.from(title, {
+                    scrollTrigger: {
+                        trigger: title,
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    x: -50,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: 'power2.out'
+                });
+            });
+        }
+
+        // CTA Button Interactions
+        document.querySelectorAll('.btn-glow').forEach(button => {
+            if (button.textContent.includes('View Open Positions')) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('This would navigate to the careers page. This is a demo.');
+                });
+            } else if (button.textContent.includes('Submit Your CV')) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('This would open a CV submission form. This is a demo.');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

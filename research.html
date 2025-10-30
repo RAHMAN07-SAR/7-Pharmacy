@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research & Innovation - REDES Pharmacy College | Pioneering Pharmaceutical Research</title>
+    <meta name="description" content="Explore cutting-edge research and innovation at REDES Pharmacy College in drug design, pharmacology, nanomedicine, and more.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --accent: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f9ff;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+        
+        .floating-dots {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .dot {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.1);
+            animation: float 15s infinite linear;
+        }
+        
+        .pulse-dot {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.15);
+            animation: pulse 4s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-20px) translateX(10px); }
+            50% { transform: translateY(-10px) translateX(20px); }
+            75% { transform: translateY(-15px) translateX(5px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.5); opacity: 0.3; }
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.4s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .text-gradient {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+        
+        .btn-glow:hover::before {
+            left: 100%;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .floating-shape {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.1;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .research-card {
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+        
+        .research-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .research-card-content {
+            transform: translateZ(20px);
+        }
+        
+        .research-icon {
+            transition: all 0.5s ease;
+        }
+        
+        .research-card:hover .research-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        .lab-card {
+            transition: all 0.4s ease;
+        }
+        
+        .lab-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .lab-image {
+            transition: all 0.5s ease;
+        }
+        
+        .lab-card:hover .lab-image {
+            transform: scale(1.05);
+        }
+        
+        .project-table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-table th {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 16px;
+            text-align: left;
+        }
+        
+        .project-table td {
+            padding: 16px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .project-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .project-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+        
+        .project-table tr:hover {
+            background-color: #f0f9ff;
+        }
+        
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 1.5rem;
+        }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .masonry-grid {
+                column-count: 1;
+            }
+        }
+        
+        .publication-card {
+            transition: all 0.3s ease;
+        }
+        
+        .publication-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .award-card {
+            transition: all 0.4s ease;
+        }
+        
+        .award-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+        
+        .award-icon {
+            transition: all 0.5s ease;
+        }
+        
+        .award-card:hover .award-icon {
+            transform: scale(1.2) rotateY(180deg);
+        }
+        
+        .sponsor-logo {
+            transition: all 0.3s ease;
+            filter: grayscale(100%);
+            opacity: 0.7;
+        }
+        
+        .sponsor-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .glow {
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+        }
+        
+        .research-highlight {
+            background: linear-gradient(120deg, transparent 0%, rgba(37, 99, 235, 0.05) 100%);
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: rotate 15s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Animated Background Elements -->
+    <div class="floating-dots" id="floatingDots"></div>
+    <div class="pulse-dots" id="pulseDots"></div>
+    
+    <!-- Floating SVG Shapes -->
+    <svg class="floating-shape" width="200" height="200" style="top: 10%; left: 5%;" viewBox="0 0 200 200">
+        <path fill="none" stroke="#2563eb" stroke-width="2" d="M40,100 C40,60 80,40 100,40 C120,40 160,60 160,100 C160,140 120,160 100,160 C80,160 40,140 40,100 Z" />
+    </svg>
+    
+    <svg class="floating-shape" width="150" height="150" style="top: 70%; right: 8%;" viewBox="0 0 150 150">
+        <polygon fill="none" stroke="#10b981" stroke-width="2" points="75,25 125,75 75,125 25,75" />
+    </svg>
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-md transition-all duration-500">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-green-500 rounded-xl flex items-center justify-center shadow-lg glow">
+                        <i class="fas fa-pills text-white text-xl" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">REDES <span class="text-blue-600">Pharmacy</span></h1>
+                        <p class="text-xs text-gray-600">College of Pharmaceutical Sciences</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex space-x-8" aria-label="Main navigation">
+                    <a href="index.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                    <a href="about.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    
+                    <div class="relative group">
+                        <a href="#" class="nav-link text-gray-700 hover:text-blue-600 font-medium flex items-center">
+                            Departments <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                        <div class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                            <a href="department.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Departments</a>
+                            <a href="faculty.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Faculty</a>
+                            <a href="infrastucture.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Infrastructure</a>
+                        </div>
+                    </div>
+
+
+                    <a href="courses.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Courses</a>
+                    <a href="research.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Research</a>
+                    <a href="admissions.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Admissions</a>
+                    <a href="news.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">News & Events</a>
+                    <a href="contact.html" class="nav-link text-blue-600 font-medium" aria-current="page">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton" class="lg:hidden text-gray-700 focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <i class="fas fa-bars text-xl" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="hidden lg:hidden py-4 border-t border-gray-200 bg-white/95 backdrop-blur-sm rounded-lg mt-2 shadow-lg" aria-labelledby="mobileMenuButton">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">About</a>
+                    <a href="departments.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Departments</a>
+                    <a href="courses.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Courses</a>
+                    <a href="research.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Research</a>
+                    <a href="admissions.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Admissions</a>
+                    <a href="faculty.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Faculty</a>
+                    <a href="infrastructure.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Infrastructure</a>
+                    <a href="news.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">News & Events</a>
+                    <a href="contact.html" class="text-blue-600 font-medium py-2 px-4 rounded-lg bg-blue-50 transition-colors" aria-current="page">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-24 md:py-32 overflow-hidden bg-gradient-to-r from-blue-900/80 to-green-800/80 text-white">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Pioneering Research for a Healthier Tomorrow</h1>
+            <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">Advancing pharmaceutical sciences through innovation, collaboration, and cutting-edge research</p>
+        </div>
+    </section>
+
+    <!-- Research Areas -->
+    <section class="py-20 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-4">Research Areas</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">Our research spans diverse domains of pharmaceutical sciences, addressing critical healthcare challenges</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Drug Design & Discovery -->
+                <div class="research-card bg-white rounded-2xl shadow-lg overflow-hidden research-highlight">
+                    <div class="h-2 bg-gradient-to-r from-blue-600 to-blue-400"></div>
+                    <div class="p-6 research-card-content">
+                        <div class="research-icon w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-atom text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Drug Design & Discovery</h3>
+                        <p class="text-gray-600 mb-4">Utilizing computational and experimental approaches for novel drug candidate identification and optimization.</p>
+                        <ul class="text-gray-600 space-y-2 mb-4">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Structure-based drug design</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> High-throughput screening</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Medicinal chemistry</li>
+                        </ul>
+                        <button class="btn-glow w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                            Explore Research <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pharmacology & Toxicology -->
+                <div class="research-card bg-white rounded-2xl shadow-lg overflow-hidden research-highlight">
+                    <div class="h-2 bg-gradient-to-r from-green-500 to-green-400"></div>
+                    <div class="p-6 research-card-content">
+                        <div class="research-icon w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-vial text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Pharmacology & Toxicology</h3>
+                        <p class="text-gray-600 mb-4">Investigating drug mechanisms, efficacy, and safety profiles through in vitro and in vivo studies.</p>
+                        <ul class="text-gray-600 space-y-2 mb-4">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Molecular pharmacology</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Safety pharmacology</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Toxicological assessments</li>
+                        </ul>
+                        <button class="btn-glow w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                            Explore Research <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Nanomedicine & Drug Delivery -->
+                <div class="research-card bg-white rounded-2xl shadow-lg overflow-hidden research-highlight">
+                    <div class="h-2 bg-gradient-to-r from-purple-600 to-purple-400"></div>
+                    <div class="p-6 research-card-content">
+                        <div class="research-icon w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-microscope text-purple-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Nanomedicine & Drug Delivery</h3>
+                        <p class="text-gray-600 mb-4">Developing advanced nano-carriers for targeted and controlled drug delivery systems.</p>
+                        <ul class="text-gray-600 space-y-2 mb-4">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Nanoparticle formulations</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Targeted drug delivery</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Controlled release systems</li>
+                        </ul>
+                        <button class="btn-glow w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                            Explore Research <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pharmaceutical Biotechnology -->
+                <div class="research-card bg-white rounded-2xl shadow-lg overflow-hidden research-highlight">
+                    <div class="h-2 bg-gradient-to-r from-indigo-600 to-indigo-400"></div>
+                    <div class="p-6 research-card-content">
+                        <div class="research-icon w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-dna text-indigo-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Pharmaceutical Biotechnology</h3>
+                        <p class="text-gray-600 mb-4">Harnessing biological systems for the development of biopharmaceuticals and novel therapies.</p>
+                        <ul class="text-gray-600 space-y-2 mb-4">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Recombinant protein production</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Monoclonal antibodies</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Gene therapy vectors</li>
+                        </ul>
+                        <button class="btn-glow w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                            Explore Research <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Clinical Pharmacy & Outcomes Research -->
+                <div class="research-card bg-white rounded-2xl shadow-lg overflow-hidden research-highlight">
+                    <div class="h-2 bg-gradient-to-r from-pink-600 to-pink-400"></div>
+                    <div class="p-6 research-card-content">
+                        <div class="research-icon w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-user-md text-pink-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Clinical Pharmacy & Outcomes Research</h3>
+                        <p class="text-gray-600 mb-4">Evaluating drug therapy outcomes and optimizing medication use in clinical settings.</p>
+                        <ul class="text-gray-600 space-y-2 mb-4">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Pharmacoeconomics</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Medication adherence</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Patient safety</li>
+                        </ul>
+                        <button class="btn-glow w-full bg-pink-600 hover:bg-pink-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                            Explore Research <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Natural Products & Traditional Medicine -->
+                <div class="research-card bg-white rounded-2xl shadow-lg overflow-hidden research-highlight">
+                    <div class="h-2 bg-gradient-to-r from-yellow-600 to-yellow-400"></div>
+                    <div class="p-6 research-card-content">
+                        <div class="research-icon w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-leaf text-yellow-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Natural Products & Traditional Medicine</h3>
+                        <p class="text-gray-600 mb-4">Exploring bioactive compounds from natural sources and validating traditional remedies.</p>
+                        <ul class="text-gray-600 space-y-2 mb-4">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Phytochemical analysis</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Standardization of herbal drugs</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Bioactivity screening</li>
+                        </ul>
+                        <button class="btn-glow w-full bg-yellow-600 hover:bg-yellow-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                            Explore Research <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Labs Showcase -->
+    <section class="py-20 bg-gradient-to-br from-blue-50 to-green-50 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-4">Research Labs & Facilities</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">State-of-the-art laboratories equipped with advanced instrumentation for cutting-edge research</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Center for Drug Discovery -->
+                <div class="lab-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Center for Drug Discovery" class="lab-image w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Advanced Facility</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Center for Drug Discovery</h3>
+                        <p class="text-gray-600 mb-4">Equipped with high-throughput screening systems, molecular modeling workstations, and compound libraries for accelerated drug discovery.</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-user mr-2"></i>
+                            <span>Dr. Rajesh Kumar, Director</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nanomedicine Research Lab -->
+                <div class="lab-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Nanomedicine Research Lab" class="lab-image w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Cutting-Edge</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Nanomedicine Research Lab</h3>
+                        <p class="text-gray-600 mb-4">Specialized facility for nanoparticle synthesis, characterization, and evaluation of targeted drug delivery systems.</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-user mr-2"></i>
+                            <span>Dr. Priya Sharma, Head</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pharmacology & Toxicology Lab -->
+                <div class="lab-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1588072432836-4d6f3238b5ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Pharmacology & Toxicology Lab" class="lab-image w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Advanced Testing</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Pharmacology & Toxicology Lab</h3>
+                        <p class="text-gray-600 mb-4">Comprehensive facility for in vitro and in vivo pharmacological and toxicological evaluations of drug candidates.</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-user mr-2"></i>
+                            <span>Dr. Anjali Reddy, Head</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Funded Projects -->
+    <section class="py-20 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-4">Funded Research Projects</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">Our research is supported by national and international funding agencies</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+                <table class="project-table">
+                    <thead>
+                        <tr>
+                            <th>Project Title</th>
+                            <th>Principal Investigator</th>
+                            <th>Funding Agency</th>
+                            <th>Duration</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-medium">Novel Nano-carriers for Targeted Cancer Therapy</td>
+                            <td>Dr. Rajesh Kumar</td>
+                            <td>Department of Science & Technology</td>
+                            <td>2022-2025</td>
+                            <td>₹2.5 Cr</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Development of Anti-diabetic Compounds from Natural Sources</td>
+                            <td>Dr. Priya Sharma</td>
+                            <td>ICMR</td>
+                            <td>2021-2024</td>
+                            <td>₹1.8 Cr</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">AI-assisted Drug Design for Neurodegenerative Diseases</td>
+                            <td>Dr. Anjali Reddy</td>
+                            <td>CSIR</td>
+                            <td>2023-2026</td>
+                            <td>₹3.2 Cr</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Advanced Drug Delivery Systems for Ocular Diseases</td>
+                            <td>Dr. Vikram Singh</td>
+                            <td>DBT</td>
+                            <td>2022-2025</td>
+                            <td>₹2.1 Cr</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Pharmacogenomics of Anticancer Drugs in Indian Population</td>
+                            <td>Dr. Sanjay Mehta</td>
+                            <td>Wellcome Trust/DBT India Alliance</td>
+                            <td>2021-2024</td>
+                            <td>₹4.5 Cr</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="text-center">
+                <h3 class="text-xl font-bold text-gray-800 mb-6">Our Funding Partners</h3>
+                <div class="flex flex-wrap justify-center gap-8 md:gap-12">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Department_of_Science_%26_Technology_%28India%29_logo.svg/1200px-Department_of_Science_%26_Technology_%28India%29_logo.svg.png" 
+                         alt="Department of Science & Technology" class="sponsor-logo h-16">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/Indian_Council_of_Medical_Research_logo.svg/1200px-Indian_Council_of_Medical_Research_logo.svg.png" 
+                         alt="ICMR" class="sponsor-logo h-16">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/69/Council_of_Scientific_%26_Industrial_Research_Logo.svg/1200px-Council_of_Scientific_%26_Industrial_Research_Logo.svg.png" 
+                         alt="CSIR" class="sponsor-logo h-16">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8a/Department_of_Biotechnology_%28India%29_Logo.png/240px-Department_of_Biotechnology_%28India%29_Logo.png" 
+                         alt="DBT" class="sponsor-logo h-16">
+                    <img src="https://www.indiaalliance.org/Images/India-Alliance-Logo-Final.jpg" 
+                         alt="Wellcome Trust/DBT India Alliance" class="sponsor-logo h-16">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications & Patents -->
+    <section class="py-20 bg-gradient-to-br from-blue-50 to-green-50 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-4">Publications & Patents</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">Our research contributions to the scientific community through publications and intellectual property</p>
+            </div>
+
+            <div class="masonry-grid">
+                <!-- Publication 1 -->
+                <div class="masonry-item">
+                    <div class="publication-card bg-white p-6 rounded-2xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-file-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <span class="text-blue-600 font-semibold">Journal Article</span>
+                                <p class="text-gray-500 text-sm">Nature Communications, 2023</p>
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-2">Novel targeted liposomes for enhanced delivery of anticancer drugs to tumor sites</h3>
+                        <p class="text-gray-600 text-sm mb-4">Kumar R, Sharma P, Reddy A. <span class="font-medium">Nature Communications</span> 14, 1234 (2023).</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 text-sm font-medium">DOI: 10.1038/s41467-023-12345-6</span>
+                            <button class="text-blue-600 hover:text-blue-800">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Patent 1 -->
+                <div class="masonry-item">
+                    <div class="publication-card bg-white p-6 rounded-2xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-gem text-green-600"></i>
+                            </div>
+                            <div>
+                                <span class="text-green-600 font-semibold">Patent</span>
+                                <p class="text-gray-500 text-sm">Indian Patent, 2022</p>
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-2">A novel process for the synthesis of sustained-release microspheres for ocular delivery</h3>
+                        <p class="text-gray-600 text-sm mb-4">Sharma P, Kumar R. <span class="font-medium">Indian Patent</span> No. 345678 (2022).</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-600 text-sm font-medium">Granted</span>
+                            <button class="text-green-600 hover:text-green-800">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 2 -->
+                <div class="masonry-item">
+                    <div class="publication-card bg-white p-6 rounded-2xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-file-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <span class="text-blue-600 font-semibold">Journal Article</span>
+                                <p class="text-gray-500 text-sm">Journal of Controlled Release, 2023</p>
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-2">pH-responsive nanoparticles for targeted delivery of anti-inflammatory drugs</h3>
+                        <p class="text-gray-600 text-sm mb-4">Reddy A, Singh V. <span class="font-medium">Journal of Controlled Release</span> 354, 56-67 (2023).</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 text-sm font-medium">DOI: 10.1016/j.jconrel.2023.01.045</span>
+                            <button class="text-blue-600 hover:text-blue-800">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 3 -->
+                <div class="masonry-item">
+                    <div class="publication-card bg-white p-6 rounded-2xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-file-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <span class="text-blue-600 font-semibold">Journal Article</span>
+                                <p class="text-gray-500 text-sm">European Journal of Pharmacology, 2022</p>
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-2">Mechanistic insights into the cardioprotective effects of a novel flavonoid derivative</h3>
+                        <p class="text-gray-600 text-sm mb-4">Mehta S, Patel A. <span class="font-medium">European Journal of Pharmacology</span> 934, 175289 (2022).</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 text-sm font-medium">DOI: 10.1016/j.ejphar.2022.175289</span>
+                            <button class="text-blue-600 hover:text-blue-800">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Patent 2 -->
+                <div class="masonry-item">
+                    <div class="publication-card bg-white p-6 rounded-2xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-gem text-green-600"></i>
+                            </div>
+                            <div>
+                                <span class="text-green-600 font-semibold">Patent</span>
+                                <p class="text-gray-500 text-sm">US Patent, 2023</p>
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-2">Compositions and methods for treating neurodegenerative disorders</h3>
+                        <p class="text-gray-600 text-sm mb-4">Kumar R, Sharma P. <span class="font-medium">US Patent</span> No. US11234567B2 (2023).</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-600 text-sm font-medium">Granted</span>
+                            <button class="text-green-600 hover:text-green-800">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 4 -->
+                <div class="masonry-item">
+                    <div class="publication-card bg-white p-6 rounded-2xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-file-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <span class="text-blue-600 font-semibold">Journal Article</span>
+                                <p class="text-gray-500 text-sm">Molecular Pharmaceutics, 2023</p>
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-2">Engineering extracellular vesicle mimetics for drug delivery applications</h3>
+                        <p class="text-gray-600 text-sm mb-4">Singh V, Reddy A. <span class="font-medium">Molecular Pharmaceutics</span> 20(4), 2100-2112 (2023).</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 text-sm font-medium">DOI: 10.1021/acs.molpharmaceut.2c01045</span>
+                            <button class="text-blue-600 hover:text-blue-800">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="btn-glow bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    View All Publications & Patents <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards & Achievements -->
+    <section class="py-20 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-4">Awards & Achievements</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">Recognition of our research excellence and contributions to pharmaceutical sciences</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Award 1 -->
+                <div class="award-card bg-gradient-to-br from-blue-50 to-green-50 p-6 rounded-2xl shadow-lg">
+                    <div class="award-icon w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-trophy text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">Best Research Paper Award</h3>
+                    <p class="text-gray-600 text-center mb-4">Awarded by Indian Pharmaceutical Association for outstanding research in drug delivery systems</p>
+                    <div class="text-center">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">2023</span>
+                    </div>
+                </div>
+
+                <!-- Award 2 -->
+                <div class="award-card bg-gradient-to-br from-green-50 to-blue-50 p-6 rounded-2xl shadow-lg">
+                    <div class="award-icon w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-award text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">Young Scientist Award</h3>
+                    <p class="text-gray-600 text-center mb-4">Dr. Priya Sharma received the DST Young Scientist Award for her work in nanomedicine</p>
+                    <div class="text-center">
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">2022</span>
+                    </div>
+                </div>
+
+                <!-- Award 3 -->
+                <div class="award-card bg-gradient-to-br from-purple-50 to-blue-50 p-6 rounded-2xl shadow-lg">
+                    <div class="award-icon w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-medal text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">Excellence in Innovation</h3>
+                    <p class="text-gray-600 text-center mb-4">Recognized by CSIR for developing a novel drug delivery platform for cancer therapy</p>
+                    <div class="text-center">
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">2022</span>
+                    </div>
+                </div>
+
+                <!-- Award 4 -->
+                <div class="award-card bg-gradient-to-br from-yellow-50 to-green-50 p-6 rounded-2xl shadow-lg">
+                    <div class="award-icon w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-star text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">Best Patent Award</h3>
+                    <p class="text-gray-600 text-center mb-4">Awarded by NRDC for the patent on sustained-release ocular drug delivery system</p>
+                    <div class="text-center">
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">2021</span>
+                    </div>
+                </div>
+
+                <!-- Award 5 -->
+                <div class="award-card bg-gradient-to-br from-pink-50 to-purple-50 p-6 rounded-2xl shadow-lg">
+                    <div class="award-icon w-16 h-16 bg-pink-100 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-gem text-pink-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">Research Excellence Award</h3>
+                    <p class="text-gray-600 text-center mb-4">Awarded by AICTE for outstanding contributions to pharmaceutical research and education</p>
+                    <div class="text-center">
+                        <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium">2021</span>
+                    </div>
+                </div>
+
+                <!-- Award 6 -->
+                <div class="award-card bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded-2xl shadow-lg">
+                    <div class="award-icon w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-crown text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">International Collaboration Award</h3>
+                    <p class="text-gray-600 text-center mb-4">Recognized for successful international research collaboration with University of Cambridge</p>
+                    <div class="text-center">
+                        <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">2020</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 cta-section text-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Collaborate With Us</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Join us in our mission to advance pharmaceutical research and develop innovative solutions for global health challenges</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="btn-glow bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    <i class="fas fa-handshake mr-2"></i> Industry Collaboration
+                </button>
+                <button class="btn-glow border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:scale-105">
+                    <i class="fas fa-graduation-cap mr-2"></i> Research Partnerships
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-green-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-pills text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold">REDES Pharmacy</h2>
+                            <p class="text-xs text-gray-400">College of Pharmaceutical Sciences</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Premier institution for pharmaceutical education and research since 1992.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition-colors duration-300">Courses</a></li>
+                        <li><a href="research.html" class="text-gray-400 hover:text-white transition-colors duration-300">Research</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Info</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-blue-500 mr-3 mt-1"></i>
+                            <span class="text-gray-400">Pharmacy College Road, HYD, Telangana 500032</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-blue-500 mr-3"></i>
+                            <span class="text-gray-400">+91 40 1234 5678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-blue-500 mr-3"></i>
+                            <span class="text-gray-400">info@redespharmacy.edu.in</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-3 w-full rounded-l-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="submit" class="bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 px-4 py-3 rounded-r-lg transition-colors duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 REDES Pharmacy College. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+            
+            // Change icon
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Create floating dots
+        const floatingDots = document.getElementById('floatingDots');
+        const colors = ['rgba(37, 99, 235, 0.1)', 'rgba(16, 185, 129, 0.1)', 'rgba(139, 92, 246, 0.1)'];
+        
+        for (let i = 0; i < 40; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            
+            // Random properties
+            const size = Math.random() * 80 + 10;
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            const delay = Math.random() * 20;
+            const duration = Math.random() * 10 + 10;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            dot.style.width = `${size}px`;
+            dot.style.height = `${size}px`;
+            dot.style.left = `${left}%`;
+            dot.style.top = `${top}%`;
+            dot.style.background = color;
+            dot.style.animationDelay = `${delay}s`;
+            dot.style.animationDuration = `${duration}s`;
+            
+            floatingDots.appendChild(dot);
+        }
+
+        // Create pulse dots
+        const pulseDotsContainer = document.createElement('div');
+        pulseDotsContainer.id = 'pulseDots';
+        document.body.appendChild(pulseDotsContainer);
+        
+        for (let i = 0; i < 15; i++) {
+            const pulseDot = document.createElement('div');
+            pulseDot.classList.add('pulse-dot');
+            
+            // Random properties
+            const size = Math.random() * 100 + 20;
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            const delay = Math.random() * 5;
+            const duration = Math.random() * 3 + 3;
+            
+            pulseDot.style.width = `${size}px`;
+            pulseDot.style.height = `${size}px`;
+            pulseDot.style.left = `${left}%`;
+            pulseDot.style.top = `${top}%`;
+            pulseDot.style.animationDelay = `${delay}s`;
+            pulseDot.style.animationDuration = `${duration}s`;
+            
+            pulseDotsContainer.appendChild(pulseDot);
+        }
+
+        // Initialize Masonry layout for publications
+        document.addEventListener('DOMContentLoaded', function() {
+            const grid = document.querySelector('.masonry-grid');
+            if (grid) {
+                new Masonry(grid, {
+                    itemSelector: '.masonry-item',
+                    columnWidth: '.masonry-item',
+                    percentPosition: true,
+                    gutter: 24
+                });
+            }
+        });
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animate elements on scroll
+        gsap.utils.toArray('.research-card, .lab-card, .award-card, .publication-card').forEach(element => {
+            gsap.from(element, {
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                    toggleActions: 'play none none reverse'
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                ease: 'power2.out'
+            });
+        });
+
+        // Animate section titles
+        gsap.utils.toArray('.section-title').forEach(title => {
+            gsap.from(title, {
+                scrollTrigger: {
+                    trigger: title,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                },
+                x: -50,
+                opacity: 0,
+                duration: 0.8,
+                ease: 'power2.out'
+            });
+        });
+
+        // Animate table rows
+        gsap.utils.toArray('.project-table tr').forEach((row, i) => {
+            gsap.from(row, {
+                scrollTrigger: {
+                    trigger: row,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                },
+                x: -100,
+                opacity: 0,
+                duration: 0.6,
+                delay: i * 0.1,
+                ease: 'power2.out'
+            });
+        });
+
+        // Animate sponsor logos
+        gsap.utils.toArray('.sponsor-logo').forEach((logo, i) => {
+            gsap.from(logo, {
+                scrollTrigger: {
+                    trigger: logo,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.6,
+                delay: i * 0.1,
+                ease: 'power2.out'
+            });
+        });
+
+        // CTA buttons
+        document.querySelectorAll('.btn-glow').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('This would open a collaboration form. This is a demo.');
+            });
+        });
+    </script>
+</body>
+</html>

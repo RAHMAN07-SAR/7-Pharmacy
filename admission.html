@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions 2025 - REDES Pharmacy College | Begin Your Journey</title>
+    <meta name="description" content="Apply for B.Pharm, M.Pharm, Pharm.D, and Ph.D programs at REDES Pharmacy College. Check eligibility, fee structure, scholarships, and important dates.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --accent: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f9ff;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+        
+        .floating-dots {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .dot {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.1);
+            animation: float 15s infinite linear;
+        }
+        
+        .pulse-dot {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.15);
+            animation: pulse 4s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-20px) translateX(10px); }
+            50% { transform: translateY(-10px) translateX(20px); }
+            75% { transform: translateY(-15px) translateX(5px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.5); opacity: 0.3; }
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.4s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .text-gradient {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+        
+        .btn-glow:hover::before {
+            left: 100%;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .floating-shape {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.1;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: var(--primary);
+            border: 4px solid white;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 0 4px var(--primary);
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -12px;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .course-tab {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .course-tab::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
+        }
+        
+        .course-tab.active::after {
+            width: 100%;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .eligibility-table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .eligibility-table th {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 16px;
+            text-align: left;
+        }
+        
+        .eligibility-table td {
+            padding: 16px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .eligibility-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .eligibility-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+        
+        .eligibility-table tr:hover {
+            background-color: #f0f9ff;
+        }
+        
+        .accordion-item {
+            margin-bottom: 16px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .accordion-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-header:hover {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+        }
+        
+        .accordion-content {
+            background: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .accordion-content.active {
+            max-height: 500px;
+        }
+        
+        .fee-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .fee-table th, .fee-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .fee-table th {
+            background-color: #f8fafc;
+            font-weight: 600;
+        }
+        
+        .scholarship-card {
+            transition: all 0.4s ease;
+        }
+        
+        .scholarship-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .scholarship-icon {
+            transition: all 0.5s ease;
+        }
+        
+        .scholarship-card:hover .scholarship-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-item {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            min-width: 100px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .countdown-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .countdown-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .countdown-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 8px;
+        }
+        
+        .prospectus-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .prospectus-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: rotate 15s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #1e3a8a 0%, #065f46 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-pulse {
+            animation: ctaPulse 2s infinite;
+        }
+        
+        @keyframes ctaPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .glow {
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 20px;
+            }
+            
+            .left::after, .right::after {
+                left: 20px;
+            }
+            
+            .right {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Animated Background Elements -->
+    <div class="floating-dots" id="floatingDots"></div>
+    <div class="pulse-dots" id="pulseDots"></div>
+    
+    <!-- Floating SVG Shapes -->
+    <svg class="floating-shape" width="200" height="200" style="top: 10%; left: 5%;" viewBox="0 0 200 200">
+        <path fill="none" stroke="#2563eb" stroke-width="2" d="M40,100 C40,60 80,40 100,40 C120,40 160,60 160,100 C160,140 120,160 100,160 C80,160 40,140 40,100 Z" />
+    </svg>
+    
+    <svg class="floating-shape" width="150" height="150" style="top: 70%; right: 8%;" viewBox="0 0 150 150">
+        <polygon fill="none" stroke="#10b981" stroke-width="2" points="75,25 125,75 75,125 25,75" />
+    </svg>
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-md transition-all duration-500">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-green-500 rounded-xl flex items-center justify-center shadow-lg glow">
+                        <i class="fas fa-pills text-white text-xl" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">REDES <span class="text-blue-600">Pharmacy</span></h1>
+                        <p class="text-xs text-gray-600">College of Pharmaceutical Sciences</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex space-x-8" aria-label="Main navigation">
+                    <a href="index.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                    <a href="about.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    
+                    <div class="relative group">
+                        <a href="#" class="nav-link text-gray-700 hover:text-blue-600 font-medium flex items-center">
+                            Departments <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                        <div class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                            <a href="department.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Departments</a>
+                            <a href="faculty.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Faculty</a>
+                            <a href="infrastucture.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Infrastructure</a>
+                        </div>
+                    </div>
+
+
+                    <a href="courses.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Courses</a>
+                    <a href="research.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Research</a>
+                    <a href="admissions.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Admissions</a>
+                    <a href="news.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">News & Events</a>
+                    <a href="contact.html" class="nav-link text-blue-600 font-medium" aria-current="page">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton" class="lg:hidden text-gray-700 focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <i class="fas fa-bars text-xl" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="hidden lg:hidden py-4 border-t border-gray-200 bg-white/95 backdrop-blur-sm rounded-lg mt-2 shadow-lg" aria-labelledby="mobileMenuButton">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">About</a>
+                    <a href="departments.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Departments</a>
+                    <a href="courses.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Courses</a>
+                    <a href="research.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Research</a>
+                    <a href="admissions.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Admissions</a>
+                    <a href="faculty.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Faculty</a>
+                    <a href="infrastructure.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Infrastructure</a>
+                    <a href="news.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">News & Events</a>
+                    <a href="contact.html" class="text-blue-600 font-medium py-2 px-4 rounded-lg bg-blue-50 transition-colors" aria-current="page">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-24 md:py-32 overflow-hidden bg-gradient-to-r from-blue-900/80 to-green-800/80 text-white">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Admissions 2025 – Begin Your Journey</h1>
+            <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">Join India's premier pharmacy institution and shape the future of healthcare</p>
+            <div class="mt-10">
+                <button class="cta-pulse btn-glow bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 mr-4">
+                    Apply Now <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+                <button class="btn-glow border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:scale-105">
+                    Download Brochure
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Steps Timeline -->
+    <section class="py-20 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-4">Admission Process</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">Follow these simple steps to join REDES Pharmacy College</p>
+            </div>
+
+            <div class="timeline">
+                <!-- Step 1 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
+                                <span class="text-blue-600 font-bold text-xl">1</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Application Submission</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Fill out the online application form with your personal, academic, and contact details.</p>
+                        <ul class="text-gray-600 space-y-2">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Online application form</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Upload required documents</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Pay application fee</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4">
+                                <span class="text-green-600 font-bold text-xl">2</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Entrance Examination</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Appear for the REDES Pharmacy Entrance Test (RPET) or submit valid scores from national-level tests.</p>
+                        <ul class="text-gray-600 space-y-2">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> RPET or national test scores</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Online proctored exam</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Syllabus-based questions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mr-4">
+                                <span class="text-purple-600 font-bold text-xl">3</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Counseling & Interview</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Shortlisted candidates will be called for counseling session and personal interview.</p>
+                        <ul class="text-gray-600 space-y-2">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Document verification</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Personal interview</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Course selection</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mr-4">
+                                <span class="text-yellow-600 font-bold text-xl">4</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Admission Offer</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Selected candidates will receive provisional admission letters via email and portal.</p>
+                        <ul class="text-gray-600 space-y-2">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Provisional admission letter</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Fee payment details</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Document submission deadline</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mr-4">
+                                <span class="text-indigo-600 font-bold text-xl">5</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Enrollment & Orientation</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Complete the enrollment process and attend the orientation program before classes begin.</p>
+                        <ul class="text-gray-600 space-y-2">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Fee payment</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Document submission</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Orientation program</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eligibility Tables -->
+    <section class="py-20 bg-gradient-to-br from-blue-50 to-green-50 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-4">Eligibility Criteria</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">Check the eligibility requirements for our various programs</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
+                <button class="course-tab active px-6 py-3 rounded-xl font-semibold bg-blue-600 text-white shadow-lg transition-all duration-300 transform hover:scale-105" data-tab="bpharm">
+                    B.Pharm
+                </button>
+                <button class="course-tab px-6 py-3 rounded-xl font-semibold bg-gray-100 text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition-all duration-300 transform hover:scale-105" data-tab="mpharm">
+                    M.Pharm
+                </button>
+                <button class="course-tab px-6 py-3 rounded-xl font-semibold bg-gray-100 text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition-all duration-300 transform hover:scale-105" data-tab="pharmd">
+                    Pharm.D
+                </button>
+                <button class="course-tab px-6 py-3 rounded-xl font-semibold bg-gray-100 text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition-all duration-300 transform hover:scale-105" data-tab="phd">
+                    Ph.D
+                </button>
+            </div>
+
+            <!-- B.Pharm Eligibility -->
+            <div class="tab-content active" id="bpharm">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <table class="eligibility-table">
+                        <thead>
+                            <tr>
+                                <th>Program</th>
+                                <th>Eligibility Criteria</th>
+                                <th>Entrance Exam</th>
+                                <th>Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-medium">B.Pharm - Regular</td>
+                                <td>10+2 with Physics, Chemistry, and Biology/Mathematics with minimum 50% marks</td>
+                                <td>RPET / State CET / NEET</td>
+                                <td>4 Years</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">B.Pharm - Lateral Entry</td>
+                                <td>D.Pharm with minimum 60% marks</td>
+                                <td>RPET (Lateral) / State CET</td>
+                                <td>3 Years</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">B.Pharm - Industry Integrated</td>
+                                <td>10+2 with PCB with minimum 55% marks</td>
+                                <td>RPET / JEE / NEET</td>
+                                <td>4 Years</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- M.Pharm Eligibility -->
+            <div class="tab-content" id="mpharm">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <table class="eligibility-table">
+                        <thead>
+                            <tr>
+                                <th>Specialization</th>
+                                <th>Eligibility Criteria</th>
+                                <th>Entrance Exam</th>
+                                <th>Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-medium">Pharmaceutics</td>
+                                <td>B.Pharm with minimum 60% marks</td>
+                                <td>GPAT / RPET-PG</td>
+                                <td>2 Years</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">Pharmacology</td>
+                                <td>B.Pharm with minimum 60% marks</td>
+                                <td>GPAT / RPET-PG</td>
+                                <td>2 Years</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">Pharmaceutical Chemistry</td>
+                                <td>B.Pharm with minimum 60% marks</td>
+                                <td>GPAT / RPET-PG</td>
+                                <td>2 Years</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">Pharmacognosy</td>
+                                <td>B.Pharm with minimum 60% marks</td>
+                                <td>GPAT / RPET-PG</td>
+                                <td>2 Years</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Pharm.D Eligibility -->
+            <div class="tab-content" id="pharmd">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <table class="eligibility-table">
+                        <thead>
+                            <tr>
+                                <th>Program</th>
+                                <th>Eligibility Criteria</th>
+                                <th>Entrance Exam</th>
+                                <th>Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-medium">Pharm.D - Regular</td>
+                                <td>10+2 with Physics, Chemistry, and Biology with minimum 50% marks</td>
+                                <td>RPET / NEET</td>
+                                <td>6 Years</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">Pharm.D - Post Baccalaureate</td>
+                                <td>B.Pharm with minimum 55% marks</td>
+                                <td>RPET-PG / GPAT</td>
+                                <td>3 Years</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Ph.D Eligibility -->
+            <div class="tab-content" id="phd">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <table class="eligibility-table">
+                        <thead>
+                            <tr>
+                                <th>Specialization</th>
+                                <th>Eligibility Criteria</th>
+                                <th>Entrance Exam</th>
+                                <th>Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-medium">Pharmaceutics</td>
+                                <td>M.Pharm in relevant specialization with minimum 60% marks</td>
+                                <td>RET / UGC-NET / CSIR-NET</td>
+                                <td>3-5 Years</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">Pharmacology</td>
+                                <td>M.Pharm in relevant specialization with minimum 60% marks</td>
+                                <td>RET / UGC-NET / CSIR-NET</td>
+                                <td>3-5 Years</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">Pharmaceutical Chemistry</td>
+                                <td>M.Pharm in relevant specialization with minimum 60% marks</td>
+                                <td>RET / UGC-NET / CSIR-NET</td>
+                                <td>3-5 Years</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fee Structure -->
+    <section class="py-20 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-4">Fee Structure</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">Transparent fee structure with year-wise breakdown for all programs</p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- B.Pharm Fee Accordion -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="text-xl font-bold">B.Pharm Program Fees</h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="p-6">
+                            <table class="fee-table">
+                                <thead>
+                                    <tr>
+                                        <th>Year</th>
+                                        <th>Tuition Fee</th>
+                                        <th>Development Fee</th>
+                                        <th>Examination Fee</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1st Year</td>
+                                        <td>₹85,000</td>
+                                        <td>₹15,000</td>
+                                        <td>₹5,000</td>
+                                        <td class="font-bold">₹1,05,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2nd Year</td>
+                                        <td>₹85,000</td>
+                                        <td>₹15,000</td>
+                                        <td>₹5,000</td>
+                                        <td class="font-bold">₹1,05,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3rd Year</td>
+                                        <td>₹85,000</td>
+                                        <td>₹15,000</td>
+                                        <td>₹5,000</td>
+                                        <td class="font-bold">₹1,05,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4th Year</td>
+                                        <td>₹85,000</td>
+                                        <td>₹15,000</td>
+                                        <td>₹5,000</td>
+                                        <td class="font-bold">₹1,05,000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="text-gray-600 mt-4 text-sm">* Hostel and mess charges are additional: ₹60,000 per year</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- M.Pharm Fee Accordion -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="text-xl font-bold">M.Pharm Program Fees</h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="p-6">
+                            <table class="fee-table">
+                                <thead>
+                                    <tr>
+                                        <th>Year</th>
+                                        <th>Tuition Fee</th>
+                                        <th>Development Fee</th>
+                                        <th>Examination Fee</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1st Year</td>
+                                        <td>₹1,20,000</td>
+                                        <td>₹20,000</td>
+                                        <td>₹8,000</td>
+                                        <td class="font-bold">₹1,48,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2nd Year</td>
+                                        <td>₹1,20,000</td>
+                                        <td>₹20,000</td>
+                                        <td>₹8,000</td>
+                                        <td class="font-bold">₹1,48,000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="text-gray-600 mt-4 text-sm">* Hostel and mess charges are additional: ₹70,000 per year</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pharm.D Fee Accordion -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="text-xl font-bold">Pharm.D Program Fees</h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="p-6">
+                            <table class="fee-table">
+                                <thead>
+                                    <tr>
+                                        <th>Year</th>
+                                        <th>Tuition Fee</th>
+                                        <th>Development Fee</th>
+                                        <th>Clinical Fee</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1st Year</td>
+                                        <td>₹1,00,000</td>
+                                        <td>₹20,000</td>
+                                        <td>₹10,000</td>
+                                        <td class="font-bold">₹1,30,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2nd Year</td>
+                                        <td>₹1,00,000</td>
+                                        <td>₹20,000</td>
+                                        <td>₹10,000</td>
+                                        <td class="font-bold">₹1,30,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3rd Year</td>
+                                        <td>₹1,00,000</td>
+                                        <td>₹20,000</td>
+                                        <td>₹10,000</td>
+                                        <td class="font-bold">₹1,30,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4th Year</td>
+                                        <td>₹1,00,000</td>
+                                        <td>₹20,000</td>
+                                        <td>₹10,000</td>
+                                        <td class="font-bold">₹1,30,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5th Year</td>
+                                        <td>₹1,00,000</td>
+                                        <td>₹20,000</td>
+                                        <td>₹15,000</td>
+                                        <td class="font-bold">₹1,35,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6th Year</td>
+                                        <td>₹1,00,000</td>
+                                        <td>₹20,000</td>
+                                        <td>₹15,000</td>
+                                        <td class="font-bold">₹1,35,000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="text-gray-600 mt-4 text-sm">* Hostel and mess charges are additional: ₹75,000 per year</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scholarships & Financial Aid -->
+    <section class="py-20 bg-gradient-to-br from-blue-50 to-green-50 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-4">Scholarships & Financial Aid</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">We offer various scholarships to support meritorious and deserving students</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Merit Scholarship -->
+                <div class="scholarship-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-2 bg-gradient-to-r from-blue-600 to-blue-400"></div>
+                    <div class="p-6">
+                        <div class="scholarship-icon w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-trophy text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Merit Scholarship</h3>
+                        <p class="text-gray-600 mb-4">Awarded to students with outstanding academic performance in qualifying examinations.</p>
+                        <ul class="text-gray-600 space-y-2 mb-4">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> 95% and above: 100% tuition fee waiver</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> 90-94%: 75% tuition fee waiver</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> 85-89%: 50% tuition fee waiver</li>
+                        </ul>
+                        <button class="btn-glow w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                            Apply Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sports Scholarship -->
+                <div class="scholarship-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-2 bg-gradient-to-r from-green-500 to-green-400"></div>
+                    <div class="p-6">
+                        <div class="scholarship-icon w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-running text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Sports Scholarship</h3>
+                        <p class="text-gray-600 mb-4">For students who have represented at state, national, or international levels in sports.</p>
+                        <ul class="text-gray-600 space-y-2 mb-4">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> International level: 100% tuition fee waiver</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> National level: 75% tuition fee waiver</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> State level: 50% tuition fee waiver</li>
+                        </ul>
+                        <button class="btn-glow w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                            Apply Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- EWS Scholarship -->
+                <div class="scholarship-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-2 bg-gradient-to-r from-purple-600 to-purple-400"></div>
+                    <div class="p-6">
+                        <div class="scholarship-icon w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-hands-helping text-purple-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Economically Weaker Section</h3>
+                        <p class="text-gray-600 mb-4">Financial assistance for students from economically disadvantaged backgrounds.</p>
+                        <ul class="text-gray-600 space-y-2 mb-4">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Family income below ₹2.5 LPA: 100% fee waiver</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Family income ₹2.5-5 LPA: 75% fee waiver</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Family income ₹5-8 LPA: 50% fee waiver</li>
+                        </ul>
+                        <button class="btn-glow w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                            Apply Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Important Dates Countdown -->
+    <section class="py-20 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-4">Important Dates</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">Don't miss these important deadlines for Admissions 2025</p>
+            </div>
+
+            <div class="bg-gradient-to-br from-blue-50 to-green-50 rounded-2xl p-8 shadow-lg mb-12">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Application Deadline Countdown</h3>
+                <div class="countdown-container">
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="days">00</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="hours">00</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="minutes">00</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="seconds">00</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Admission Schedule</h3>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between items-center pb-4 border-b border-gray-200">
+                            <span class="text-gray-700">Application Start Date</span>
+                            <span class="font-bold text-blue-600">January 15, 2025</span>
+                        </li>
+                        <li class="flex justify-between items-center pb-4 border-b border-gray-200">
+                            <span class="text-gray-700">Last Date for Application</span>
+                            <span class="font-bold text-blue-600">April 30, 2025</span>
+                        </li>
+                        <li class="flex justify-between items-center pb-4 border-b border-gray-200">
+                            <span class="text-gray-700">Entrance Exam Date</span>
+                            <span class="font-bold text-blue-600">May 15, 2025</span>
+                        </li>
+                        <li class="flex justify-between items-center pb-4 border-b border-gray-200">
+                            <span class="text-gray-700">Result Declaration</span>
+                            <span class="font-bold text-blue-600">May 30, 2025</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-gray-700">Course Commencement</span>
+                            <span class="font-bold text-blue-600">July 15, 2025</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Document Submission</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span class="text-gray-700">10th & 12th Mark Sheets</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span class="text-gray-700">Transfer Certificate</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span class="text-gray-700">Migration Certificate</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span class="text-gray-700">Character Certificate</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span class="text-gray-700">Aadhar Card Copy</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span class="text-gray-700">Passport Size Photographs</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span class="text-gray-700">Caste Certificate (if applicable)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Prospectus -->
+    <section class="py-20 prospectus-section text-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Get Complete Admission Details</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Download our detailed prospectus with complete information about programs, fees, scholarships, and admission process.</p>
+            <button class="btn-glow bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <i class="fas fa-download mr-2"></i> Download Prospectus
+            </button>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 cta-section text-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Begin Your Pharmacy Journey?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Join REDES Pharmacy College and become part of a legacy of excellence in pharmaceutical education</p>
+            <button class="cta-pulse btn-glow bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-lg">
+                Apply Now <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+            <p class="mt-4 text-blue-100">Applications closing in <span id="countdown-text" class="font-bold"></span></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-green-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-pills text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold">REDES Pharmacy</h2>
+                            <p class="text-xs text-gray-400">College of Pharmaceutical Sciences</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Premier institution for pharmaceutical education and research since 1992.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition-colors duration-300">Courses</a></li>
+                        <li><a href="admissions.html" class="text-gray-400 hover:text-white transition-colors duration-300">Admissions</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Info</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-blue-500 mr-3 mt-1"></i>
+                            <span class="text-gray-400">Pharmacy College Road, HYD, Telangana 500032</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-blue-500 mr-3"></i>
+                            <span class="text-gray-400">+91 40 1234 5678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-blue-500 mr-3"></i>
+                            <span class="text-gray-400">info@redespharmacy.edu.in</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Admissions Helpline</h3>
+                    <p class="text-gray-400 mb-4">For any queries related to admissions, contact our helpline:</p>
+                    <div class="bg-blue-900/50 p-4 rounded-lg">
+                        <p class="font-bold">+91 98765 43210</p>
+                        <p class="text-sm text-blue-200">Mon-Sat, 9:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 REDES Pharmacy College. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+            
+            // Change icon
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Create floating dots
+        const floatingDots = document.getElementById('floatingDots');
+        const colors = ['rgba(37, 99, 235, 0.1)', 'rgba(16, 185, 129, 0.1)', 'rgba(139, 92, 246, 0.1)'];
+        
+        for (let i = 0; i < 40; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            
+            // Random properties
+            const size = Math.random() * 80 + 10;
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            const delay = Math.random() * 20;
+            const duration = Math.random() * 10 + 10;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            dot.style.width = `${size}px`;
+            dot.style.height = `${size}px`;
+            dot.style.left = `${left}%`;
+            dot.style.top = `${top}%`;
+            dot.style.background = color;
+            dot.style.animationDelay = `${delay}s`;
+            dot.style.animationDuration = `${duration}s`;
+            
+            floatingDots.appendChild(dot);
+        }
+
+        // Create pulse dots
+        const pulseDotsContainer = document.createElement('div');
+        pulseDotsContainer.id = 'pulseDots';
+        document.body.appendChild(pulseDotsContainer);
+        
+        for (let i = 0; i < 15; i++) {
+            const pulseDot = document.createElement('div');
+            pulseDot.classList.add('pulse-dot');
+            
+            // Random properties
+            const size = Math.random() * 100 + 20;
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            const delay = Math.random() * 5;
+            const duration = Math.random() * 3 + 3;
+            
+            pulseDot.style.width = `${size}px`;
+            pulseDot.style.height = `${size}px`;
+            pulseDot.style.left = `${left}%`;
+            pulseDot.style.top = `${top}%`;
+            pulseDot.style.animationDelay = `${delay}s`;
+            pulseDot.style.animationDuration = `${duration}s`;
+            
+            pulseDotsContainer.appendChild(pulseDot);
+        }
+
+        // Course Tab Functionality
+        const courseTabs = document.querySelectorAll('.course-tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        courseTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                courseTabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.classList.remove('bg-blue-600', 'text-white');
+                    t.classList.add('bg-gray-100', 'text-gray-700', 'hover:bg-blue-100', 'hover:text-blue-700');
+                });
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                tab.classList.remove('bg-gray-100', 'text-gray-700', 'hover:bg-blue-100', 'hover:text-blue-700');
+                tab.classList.add('bg-blue-600', 'text-white');
+                
+                // Hide all tab contents
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Show selected tab content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Accordion Functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('i');
+                
+                // Toggle active class
+                content.classList.toggle('active');
+                
+                // Rotate icon
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+                
+                // Close other accordions
+                accordionHeaders.forEach(otherHeader => {
+                    if (otherHeader !== header) {
+                        const otherContent = otherHeader.nextElementSibling;
+                        const otherIcon = otherHeader.querySelector('i');
+                        otherContent.classList.remove('active');
+                        otherIcon.classList.remove('fa-chevron-up');
+                        otherIcon.classList.add('fa-chevron-down');
+                    }
+                });
+            });
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+            const targetDate = new Date('April 30, 2025 23:59:59').getTime();
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+            
+            if (timeLeft < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                document.getElementById('countdown-text').textContent = 'Applications are closed';
+                return;
+            }
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            // Update countdown text
+            if (days > 0) {
+                document.getElementById('countdown-text').textContent = `${days} days`;
+            } else if (hours > 0) {
+                document.getElementById('countdown-text').textContent = `${hours} hours`;
+            } else {
+                document.getElementById('countdown-text').textContent = `${minutes} minutes`;
+            }
+        }
+        
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animate elements on scroll
+        gsap.utils.toArray('.timeline-content, .scholarship-card, .countdown-item, .accordion-item').forEach(element => {
+            gsap.from(element, {
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                    toggleActions: 'play none none reverse'
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                ease: 'power2.out'
+            });
+        });
+
+        // Animate section titles
+        gsap.utils.toArray('.section-title').forEach(title => {
+            gsap.from(title, {
+                scrollTrigger: {
+                    trigger: title,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                },
+                x: -50,
+                opacity: 0,
+                duration: 0.8,
+                ease: 'power2.out'
+            });
+        });
+
+        // Animate timeline items sequentially
+        gsap.utils.toArray('.timeline-item').forEach((item, i) => {
+            gsap.from(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                },
+                x: i % 2 === 0 ? -100 : 100,
+                opacity: 0,
+                duration: 0.8,
+                delay: i * 0.2,
+                ease: 'power2.out'
+            });
+        });
+
+        // Animate table rows
+        gsap.utils.toArray('.eligibility-table tr').forEach((row, i) => {
+            gsap.from(row, {
+                scrollTrigger: {
+                    trigger: row,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                },
+                x: -100,
+                opacity: 0,
+                duration: 0.6,
+                delay: i * 0.1,
+                ease: 'power2.out'
+            });
+        });
+
+        // Button click handlers
+        document.querySelectorAll('.btn-glow').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.textContent.includes('Apply Now')) {
+                    alert('Application form would open. This is a demo.');
+                } else if (this.textContent.includes('Download')) {
+                    alert('Prospectus download would start. This is a demo.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

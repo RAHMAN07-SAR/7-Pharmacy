@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments - REDES Pharmacy College | Premier Pharmaceutical Education</title>
+    <meta name="description" content="Explore the academic departments at REDES Pharmacy College. Learn about Pharmaceutics, Pharmaceutical Chemistry, Pharmacognosy, Pharmacology, and Pharmacy Practice.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --accent: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f9ff;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+        
+        .floating-dots {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .dot {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.1);
+            animation: float 15s infinite linear;
+        }
+        
+        .pulse-dot {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.15);
+            animation: pulse 4s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-20px) translateX(10px); }
+            50% { transform: translateY(-10px) translateX(20px); }
+            75% { transform: translateY(-15px) translateX(5px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.5); opacity: 0.3; }
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.4s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .text-gradient {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+        
+        .btn-glow:hover::before {
+            left: 100%;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .floating-shape {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.1;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .carousel-slide {
+            display: none;
+            transition: opacity 0.5s ease;
+        }
+        
+        .carousel-slide.active {
+            display: block;
+        }
+        
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
+        
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .carousel-control:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-control.prev {
+            left: 20px;
+        }
+        
+        .carousel-control.next {
+            right: 20px;
+        }
+        
+        .dept-card {
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+        
+        .dept-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .dept-image {
+            transition: all 0.5s ease;
+        }
+        
+        .dept-card:hover .dept-image {
+            transform: scale(1.05);
+        }
+        
+        .faculty-highlight {
+            transition: all 0.3s ease;
+        }
+        
+        .faculty-highlight:hover {
+            transform: translateX(5px);
+            background: rgba(59, 130, 246, 0.05);
+        }
+        
+        /* Accessibility improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Focus styles for keyboard navigation */
+        a:focus, button:focus {
+            outline: 2px solid #2563eb;
+            outline-offset: 2px;
+        }
+        
+        /* Loading optimization */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Performance improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Animated Background Elements -->
+    <div class="floating-dots" id="floatingDots" aria-hidden="true"></div>
+    <div class="pulse-dots" id="pulseDots" aria-hidden="true"></div>
+    
+    <!-- Floating SVG Shapes -->
+    <svg class="floating-shape" width="200" height="200" style="top: 10%; left: 5%;" viewBox="0 0 200 200" aria-hidden="true">
+        <path fill="none" stroke="#2563eb" stroke-width="2" d="M40,100 C40,60 80,40 100,40 C120,40 160,60 160,100 C160,140 120,160 100,160 C80,160 40,140 40,100 Z" />
+    </svg>
+    
+    <svg class="floating-shape" width="150" height="150" style="top: 70%; right: 8%;" viewBox="0 0 150 150" aria-hidden="true">
+        <polygon fill="none" stroke="#10b981" stroke-width="2" points="75,25 125,75 75,125 25,75" />
+    </svg>
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-md transition-all duration-500">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-green-500 rounded-xl flex items-center justify-center shadow-lg glow">
+                        <i class="fas fa-pills text-white text-xl" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">REDES <span class="text-blue-600">Pharmacy</span></h1>
+                        <p class="text-xs text-gray-600">College of Pharmaceutical Sciences</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex space-x-8" aria-label="Main navigation">
+                    <a href="index.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                    <a href="about.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    
+                    <div class="relative group">
+                        <a href="#" class="nav-link text-gray-700 hover:text-blue-600 font-medium flex items-center">
+                            Departments <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                        <div class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                            <a href="department.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Departments</a>
+                            <a href="faculty.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Faculty</a>
+                            <a href="infrastucture.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Infrastructure</a>
+                        </div>
+                    </div>
+
+
+                    <a href="courses.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Courses</a>
+                    <a href="research.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Research</a>
+                    <a href="admissions.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Admissions</a>
+                    <a href="news.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">News & Events</a>
+                    <a href="contact.html" class="nav-link text-blue-600 font-medium" aria-current="page">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton" class="lg:hidden text-gray-700 focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <i class="fas fa-bars text-xl" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="hidden lg:hidden py-4 border-t border-gray-200 bg-white/95 backdrop-blur-sm rounded-lg mt-2 shadow-lg" aria-labelledby="mobileMenuButton">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">About</a>
+                    <a href="departments.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Departments</a>
+                    <a href="courses.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Courses</a>
+                    <a href="research.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Research</a>
+                    <a href="admissions.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Admissions</a>
+                    <a href="faculty.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Faculty</a>
+                    <a href="infrastructure.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Infrastructure</a>
+                    <a href="news.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">News & Events</a>
+                    <a href="contact.html" class="text-blue-600 font-medium py-2 px-4 rounded-lg bg-blue-50 transition-colors" aria-current="page">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="relative py-24 md:py-32 overflow-hidden bg-gradient-to-r from-blue-900/80 to-green-800/80 text-white" aria-labelledby="page-title">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')" role="img" aria-label="Modern pharmaceutical laboratory"></div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 id="page-title" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Departments & Divisions</h1>
+            <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">Explore our specialized academic departments and cutting-edge facilities</p>
+        </div>
+    </section>
+
+    <!-- Department Grid -->
+    <section class="py-20 bg-white relative overflow-hidden" aria-labelledby="departments-title">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 id="departments-title" class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-4">Academic Departments</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">Our specialized departments offer comprehensive education and research opportunities in all areas of pharmaceutical sciences.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Pharmaceutics -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden dept-card card-hover">
+                    <div class="overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Pharmaceutics laboratory with modern equipment" class="dept-image w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Pharmaceutics</h3>
+                        <p class="text-gray-600 mb-4">Focuses on drug formulation, development, and delivery systems to ensure safe and effective medication.</p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-gray-800 mb-3">Faculty Highlights</h4>
+                            <div class="space-y-2">
+                                <div class="faculty-highlight p-2 rounded-lg border border-gray-100">
+                                    <p class="text-sm font-medium text-gray-800">Dr. Anil Sharma</p>
+                                    <p class="text-xs text-gray-600">Expert in novel drug delivery systems</p>
+                                </div>
+                                <div class="faculty-highlight p-2 rounded-lg border border-gray-100">
+                                    <p class="text-sm font-medium text-gray-800">Dr. Meera Patel</p>
+                                    <p class="text-xs text-gray-600">Specialist in pharmaceutical nanotechnology</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                            Explore Department <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pharmaceutical Chemistry -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden dept-card card-hover">
+                    <div class="overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Pharmaceutical chemistry laboratory with chemical structures" class="dept-image w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Pharmaceutical Chemistry</h3>
+                        <p class="text-gray-600 mb-4">Explores the design, synthesis, and analysis of pharmaceutical compounds and their properties.</p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-gray-800 mb-3">Faculty Highlights</h4>
+                            <div class="space-y-2">
+                                <div class="faculty-highlight p-2 rounded-lg border border-gray-100">
+                                    <p class="text-sm font-medium text-gray-800">Dr. Rajiv Malhotra</p>
+                                    <p class="text-xs text-gray-600">Medicinal chemistry and drug design</p>
+                                </div>
+                                <div class="faculty-highlight p-2 rounded-lg border border-gray-100">
+                                    <p class="text-sm font-medium text-gray-800">Dr. Sunita Reddy</p>
+                                    <p class="text-xs text-gray-600">Analytical method development</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                            Explore Department <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pharmacognosy -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden dept-card card-hover">
+                    <div class="overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" 
+                             alt="Pharmacognosy laboratory with plant extracts and herbal medicines" class="dept-image w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Pharmacognosy</h3>
+                        <p class="text-gray-600 mb-4">Studies medicinal drugs derived from plants or other natural sources and their bioactive compounds.</p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-gray-800 mb-3">Faculty Highlights</h4>
+                            <div class="space-y-2">
+                                <div class="faculty-highlight p-2 rounded-lg border border-gray-100">
+                                    <p class="text-sm font-medium text-gray-800">Dr. Lakshmi Nair</p>
+                                    <p class="text-xs text-gray-600">Ethnobotany and traditional medicine</p>
+                                </div>
+                                <div class="faculty-highlight p-2 rounded-lg border border-gray-100">
+                                    <p class="text-sm font-medium text-gray-800">Dr. Vikram Joshi</p>
+                                    <p class="text-xs text-gray-600">Natural product isolation and characterization</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                            Explore Department <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pharmacology -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden dept-card card-hover">
+                    <div class="overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Pharmacology laboratory with research equipment" class="dept-image w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Pharmacology</h3>
+                        <p class="text-gray-600 mb-4">Examines drug actions and interactions with biological systems, from molecular mechanisms to clinical effects.</p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-gray-800 mb-3">Faculty Highlights</h4>
+                            <div class="space-y-2">
+                                <div class="faculty-highlight p-2 rounded-lg border border-gray-100">
+                                    <p class="text-sm font-medium text-gray-800">Dr. Arjun Kapoor</p>
+                                    <p class="text-xs text-gray-600">Cardiovascular pharmacology</p>
+                                </div>
+                                <div class="faculty-highlight p-2 rounded-lg border border-gray-100">
+                                    <p class="text-sm font-medium text-gray-800">Dr. Priya Menon</p>
+                                    <p class="text-xs text-gray-600">Neuropharmacology and drug addiction</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                            Explore Department <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pharmacy Practice -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden dept-card card-hover">
+                    <div class="overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1585435557343-3b092031d5ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Pharmacy practice clinical setting" class="dept-image w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Pharmacy Practice</h3>
+                        <p class="text-gray-600 mb-4">Focuses on patient-centered care, clinical pharmacy, and the safe and effective use of medications.</p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-gray-800 mb-3">Faculty Highlights</h4>
+                            <div class="space-y-2">
+                                <div class="faculty-highlight p-2 rounded-lg border border-gray-100">
+                                    <p class="text-sm font-medium text-gray-800">Dr. Sanjay Verma</p>
+                                    <p class="text-xs text-gray-600">Clinical pharmacy and therapeutics</p>
+                                </div>
+                                <div class="faculty-highlight p-2 rounded-lg border border-gray-100">
+                                    <p class="text-sm font-medium text-gray-800">Dr. Neha Gupta</p>
+                                    <p class="text-xs text-gray-600">Pharmacy administration and management</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                            Explore Department <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Additional Department Card -->
+                <div class="bg-gradient-to-br from-blue-50 to-green-50 rounded-2xl shadow-lg overflow-hidden dept-card card-hover flex flex-col justify-center items-center p-8 text-center">
+                    <div class="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-plus text-blue-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Interdisciplinary Programs</h3>
+                    <p class="text-gray-600 mb-6">Explore our interdisciplinary research centers and collaborative programs that bridge multiple pharmaceutical disciplines.</p>
+                    <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                        View All Programs <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Department Highlights Carousel -->
+    <section class="py-20 bg-gradient-to-br from-blue-50 to-green-50 relative overflow-hidden" aria-labelledby="highlights-title">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 id="highlights-title" class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-4">Department Highlights</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">Discover the latest developments, research projects, and events across our departments.</p>
+            </div>
+
+            <div class="carousel-container">
+                <!-- Carousel Slides -->
+                <div class="carousel-slide active">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="State-of-the-art pharmaceutical laboratory" class="w-full h-96 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Advanced Research Labs</h3>
+                            <p class="max-w-2xl">Our departments are equipped with state-of-the-art laboratories for cutting-edge pharmaceutical research and development.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-slide">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Students working on a research project" class="w-full h-96 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Research Projects</h3>
+                            <p class="max-w-2xl">Students and faculty collaborate on innovative research projects addressing current healthcare challenges.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-slide">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1431540015161-0bf868a2d407?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Academic seminar in progress" class="w-full h-96 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Academic Seminars</h3>
+                            <p class="max-w-2xl">Regular seminars and workshops featuring renowned experts from the pharmaceutical industry and academia.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Controls -->
+                <button class="carousel-control prev" aria-label="Previous slide">
+                    <i class="fas fa-chevron-left text-gray-800"></i>
+                </button>
+                <button class="carousel-control next" aria-label="Next slide">
+                    <i class="fas fa-chevron-right text-gray-800"></i>
+                </button>
+
+                <!-- Carousel Indicators -->
+                <div class="carousel-indicators">
+                    <button class="carousel-indicator active" aria-label="Go to slide 1"></button>
+                    <button class="carousel-indicator" aria-label="Go to slide 2"></button>
+                    <button class="carousel-indicator" aria-label="Go to slide 3"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-gradient-to-r from-blue-600 to-green-500 rounded-2xl p-8 md:p-12 text-center text-white shadow-2xl">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Explore Department Research</h2>
+                <p class="text-blue-100 max-w-2xl mx-auto mb-8 text-lg">Dive deeper into the innovative research happening across all our departments. Discover publications, ongoing projects, and collaboration opportunities.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#" class="btn-glow bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                        View Research Publications <i class="fas fa-book-open ml-2"></i>
+                    </a>
+                    <a href="#" class="btn-glow bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:bg-white/10">
+                        Contact Research Department <i class="fas fa-envelope ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-green-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-pills text-white text-xl" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold">REDES Pharmacy</h2>
+                            <p class="text-xs text-gray-400">College of Pharmaceutical Sciences</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Premier institution for pharmaceutical education and research since 1992.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110" aria-label="Visit our Facebook page">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110" aria-label="Visit our Twitter page">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110" aria-label="Visit our LinkedIn page">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110" aria-label="Visit our Instagram page">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="departments.html" class="text-gray-400 hover:text-white transition-colors duration-300">Departments</a></li>
+                        <li><a href="admissions.html" class="text-gray-400 hover:text-white transition-colors duration-300">Admissions</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Info</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-blue-500 mr-3 mt-1" aria-hidden="true"></i>
+                            <span class="text-gray-400">Pharmacy College Road, HYD, Telangana 500032</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-blue-500 mr-3" aria-hidden="true"></i>
+                            <span class="text-gray-400">+91 40 1234 5678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-blue-500 mr-3" aria-hidden="true"></i>
+                            <span class="text-gray-400">info@redespharmacy.edu.in</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates.</p>
+                    <form class="flex">
+                        <label for="email-newsletter" class="sr-only">Email address</label>
+                        <input id="email-newsletter" type="email" placeholder="Your email" class="px-4 py-3 w-full rounded-l-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="submit" class="bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 px-4 py-3 rounded-r-lg transition-colors duration-300" aria-label="Subscribe to newsletter">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 REDES Pharmacy College. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+            
+            // Update ARIA attributes
+            const isExpanded = menu.classList.contains('hidden') ? 'false' : 'true';
+            this.setAttribute('aria-expanded', isExpanded);
+            
+            // Change icon
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Create floating dots
+        const floatingDots = document.getElementById('floatingDots');
+        const colors = ['rgba(37, 99, 235, 0.1)', 'rgba(16, 185, 129, 0.1)', 'rgba(139, 92, 246, 0.1)'];
+        
+        for (let i = 0; i < 40; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            
+            // Random properties
+            const size = Math.random() * 80 + 10;
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            const delay = Math.random() * 20;
+            const duration = Math.random() * 10 + 10;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            dot.style.width = `${size}px`;
+            dot.style.height = `${size}px`;
+            dot.style.left = `${left}%`;
+            dot.style.top = `${top}%`;
+            dot.style.background = color;
+            dot.style.animationDelay = `${delay}s`;
+            dot.style.animationDuration = `${duration}s`;
+            
+            floatingDots.appendChild(dot);
+        }
+
+        // Create pulse dots
+        const pulseDotsContainer = document.getElementById('pulseDots');
+        
+        for (let i = 0; i < 15; i++) {
+            const pulseDot = document.createElement('div');
+            pulseDot.classList.add('pulse-dot');
+            
+            // Random properties
+            const size = Math.random() * 100 + 20;
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            const delay = Math.random() * 5;
+            const duration = Math.random() * 3 + 3;
+            
+            pulseDot.style.width = `${size}px`;
+            pulseDot.style.height = `${size}px`;
+            pulseDot.style.left = `${left}%`;
+            pulseDot.style.top = `${top}%`;
+            pulseDot.style.animationDelay = `${delay}s`;
+            pulseDot.style.animationDuration = `${duration}s`;
+            
+            pulseDotsContainer.appendChild(pulseDot);
+        }
+
+        // Carousel Functionality
+        const carouselSlides = document.querySelectorAll('.carousel-slide');
+        const carouselIndicators = document.querySelectorAll('.carousel-indicator');
+        const prevButton = document.querySelector('.carousel-control.prev');
+        const nextButton = document.querySelector('.carousel-control.next');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            // Hide all slides
+            carouselSlides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Remove active class from all indicators
+            carouselIndicators.forEach(indicator => {
+                indicator.classList.remove('active');
+            });
+            
+            // Show the selected slide
+            carouselSlides[index].classList.add('active');
+            carouselIndicators[index].classList.add('active');
+            
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            let nextIndex = (currentSlide + 1) % carouselSlides.length;
+            showSlide(nextIndex);
+        }
+
+        function prevSlide() {
+            let prevIndex = (currentSlide - 1 + carouselSlides.length) % carouselSlides.length;
+            showSlide(prevIndex);
+        }
+
+        // Add event listeners
+        nextButton.addEventListener('click', nextSlide);
+        prevButton.addEventListener('click', prevSlide);
+
+        // Add click events to indicators
+        carouselIndicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+
+        // Auto-advance carousel
+        let carouselInterval = setInterval(nextSlide, 5000);
+
+        // Pause carousel on hover
+        const carouselContainer = document.querySelector('.carousel-container');
+        carouselContainer.addEventListener('mouseenter', () => {
+            clearInterval(carouselInterval);
+        });
+
+        carouselContainer.addEventListener('mouseleave', () => {
+            carouselInterval = setInterval(nextSlide, 5000);
+        });
+
+        // GSAP Animations
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Animate elements on scroll
+            gsap.utils.toArray('.dept-card, .card-hover').forEach(element => {
+                gsap.from(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 80%',
+                        end: 'bottom 20%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: 'power2.out'
+                });
+            });
+
+            // Animate section titles
+            gsap.utils.toArray('.section-title').forEach(title => {
+                gsap.from(title, {
+                    scrollTrigger: {
+                        trigger: title,
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    x: -50,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: 'power2.out'
+                });
+            });
+
+            // Animate faculty highlights
+            gsap.utils.toArray('.faculty-highlight').forEach((item, i) => {
+                gsap.from(item, {
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    x: -30,
+                    opacity: 0,
+                    duration: 0.6,
+                    delay: i * 0.1,
+                    ease: 'power2.out'
+                });
+            });
+        }
+
+        // Explore button interactions
+        document.querySelectorAll('.dept-card a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const deptName = this.closest('.dept-card').querySelector('h3').textContent;
+                alert(`This would navigate to the detailed page for ${deptName}. This is a demo.`);
+            });
+        });
+
+        // CTA button interactions
+        document.querySelectorAll('.btn-glow').forEach(button => {
+            if (button.textContent.includes('View Research Publications')) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('This would navigate to the research publications page. This is a demo.');
+                });
+            } else if (button.textContent.includes('Contact Research Department')) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('This would navigate to the contact form for research departments. This is a demo.');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - REDES Pharmacy College | Premier Pharmaceutical Education</title>
+    <meta name="description" content="Learn about REDES Pharmacy College's history, mission, vision, leadership, and accreditations. Discover our commitment to pharmaceutical education excellence.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --accent: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f9ff;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+        
+        .floating-dots {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .dot {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.1);
+            animation: float 15s infinite linear;
+        }
+        
+        .pulse-dot {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.15);
+            animation: pulse 4s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-20px) translateX(10px); }
+            50% { transform: translateY(-10px) translateX(20px); }
+            75% { transform: translateY(-15px) translateX(5px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.5); opacity: 0.3; }
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.4s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .text-gradient {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+        
+        .btn-glow:hover::before {
+            left: 100%;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .floating-shape {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.1;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% + 20px);
+            background: var(--primary);
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 14px;
+        }
+        
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .leader-card {
+            transition: all 0.4s ease;
+        }
+        
+        .leader-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .leader-image {
+            transition: all 0.5s ease;
+        }
+        
+        .leader-card:hover .leader-image {
+            transform: scale(1.05);
+        }
+        
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+        
+        .video-container:hover .video-overlay {
+            opacity: 0.8;
+        }
+        
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .play-button:hover {
+            transform: scale(1.1);
+            background: white;
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Animated Background Elements -->
+    <div class="floating-dots" id="floatingDots"></div>
+    <div class="pulse-dots" id="pulseDots"></div>
+    
+    <!-- Floating SVG Shapes -->
+    <svg class="floating-shape" width="200" height="200" style="top: 10%; left: 5%;" viewBox="0 0 200 200">
+        <path fill="none" stroke="#2563eb" stroke-width="2" d="M40,100 C40,60 80,40 100,40 C120,40 160,60 160,100 C160,140 120,160 100,160 C80,160 40,140 40,100 Z" />
+    </svg>
+    
+    <svg class="floating-shape" width="150" height="150" style="top: 70%; right: 8%;" viewBox="0 0 150 150">
+        <polygon fill="none" stroke="#10b981" stroke-width="2" points="75,25 125,75 75,125 25,75" />
+    </svg>
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-md transition-all duration-500">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-green-500 rounded-xl flex items-center justify-center shadow-lg glow">
+                        <i class="fas fa-pills text-white text-xl" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">REDES <span class="text-blue-600">Pharmacy</span></h1>
+                        <p class="text-xs text-gray-600">College of Pharmaceutical Sciences</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex space-x-8" aria-label="Main navigation">
+                    <a href="index.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                    <a href="about.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    
+                    <div class="relative group">
+                        <a href="#" class="nav-link text-gray-700 hover:text-blue-600 font-medium flex items-center">
+                            Departments <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                        <div class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                            <a href="department.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Departments</a>
+                            <a href="faculty.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Faculty</a>
+                            <a href="infrastucture.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Infrastructure</a>
+                        </div>
+                    </div>
+
+
+                    <a href="courses.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Courses</a>
+                    <a href="research.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Research</a>
+                    <a href="admissions.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Admissions</a>
+                    <a href="news.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">News & Events</a>
+                    <a href="contact.html" class="nav-link text-blue-600 font-medium" aria-current="page">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton" class="lg:hidden text-gray-700 focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <i class="fas fa-bars text-xl" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="hidden lg:hidden py-4 border-t border-gray-200 bg-white/95 backdrop-blur-sm rounded-lg mt-2 shadow-lg" aria-labelledby="mobileMenuButton">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">About</a>
+                    <a href="departments.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Departments</a>
+                    <a href="courses.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Courses</a>
+                    <a href="research.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Research</a>
+                    <a href="admissions.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Admissions</a>
+                    <a href="faculty.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Faculty</a>
+                    <a href="infrastructure.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">Infrastructure</a>
+                    <a href="news.html" class="text-gray-700 hover:text-blue-600 font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors">News & Events</a>
+                    <a href="contact.html" class="text-blue-600 font-medium py-2 px-4 rounded-lg bg-blue-50 transition-colors" aria-current="page">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="relative py-24 md:py-32 overflow-hidden bg-gradient-to-r from-blue-900/80 to-green-800/80 text-white">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80')"></div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">About Our Institution</h1>
+            <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">Where education meets innovation</p>
+        </div>
+    </section>
+
+    <!-- Institutional Story -->
+    <section class="py-20 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-6">Our History & Journey</h2>
+                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">Founded in 1992, REDES Pharmacy College has grown from a small institution to one of the premier pharmaceutical education centers in the country. Our journey reflects our commitment to excellence, innovation, and the development of healthcare professionals.</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">1992 - Foundation</h3>
+                            <p class="text-gray-600">REDES Pharmacy College was established with a vision to provide quality pharmaceutical education.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">1998 - PCI Approval</h3>
+                            <p class="text-gray-600">Received approval from Pharmacy Council of India (PCI) for B.Pharm program.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">2005 - Expansion</h3>
+                            <p class="text-gray-600">Introduced M.Pharm programs in various specializations and expanded campus infrastructure.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">2012 - Research Focus</h3>
+                            <p class="text-gray-600">Established advanced research centers and introduced Ph.D. programs.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">2020 - Digital Transformation</h3>
+                            <p class="text-gray-600">Implemented smart classrooms and digital learning platforms to enhance education delivery.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">2023 - Current Status</h3>
+                            <p class="text-gray-600">Ranked among top 10 pharmacy colleges in India with 1000+ students and 80+ faculty members.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="floating bg-gradient-to-r from-blue-500 to-green-400 rounded-2xl p-1 transform rotate-2 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" 
+                             alt="REDES Pharmacy College Campus" class="rounded-2xl w-full h-96 object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-2xl">
+                        <div class="flex items-center">
+                            <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-trophy text-blue-600 text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">30+ Years</h3>
+                                <p class="text-sm text-gray-600">Of Excellence</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission, Vision & Core Values -->
+    <section class="py-20 bg-gradient-to-br from-blue-50 to-green-50 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Guiding Principles</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">The foundation of our institution built on strong values and a clear vision for the future.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 mx-auto shadow-md">
+                        <i class="fas fa-bullseye text-blue-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Our Mission</h3>
+                    <p class="text-gray-600 text-center leading-relaxed">To provide excellence in pharmaceutical education, research, and healthcare services to meet global standards and societal needs through innovative teaching methods and cutting-edge research.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="w-20 h-20 bg-green-100 rounded-2xl flex items-center justify-center mb-6 mx-auto shadow-md">
+                        <i class="fas fa-eye text-green-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Our Vision</h3>
+                    <p class="text-gray-600 text-center leading-relaxed">To be a center of excellence in pharmaceutical education and research, producing competent professionals who can contribute significantly to the global healthcare sector and society.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="w-20 h-20 bg-purple-100 rounded-2xl flex items-center justify-center mb-6 mx-auto shadow-md">
+                        <i class="fas fa-heart text-purple-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Core Values</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Excellence in Education</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Innovation & Research</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Ethical Practices</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Student-Centered Approach</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Social Responsibility</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accreditations -->
+    <section class="py-20 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-4">Accreditations & Recognitions</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">Our commitment to quality education is recognized by leading accreditation bodies.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="tooltip bg-gray-50 p-6 rounded-2xl shadow-md text-center card-hover">
+                    <div class="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-blue-600 font-bold text-xl">PCI</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Pharmacy Council of India</h3>
+                    <span class="tooltip-text">Approved by PCI for all undergraduate and postgraduate programs</span>
+                </div>
+
+                <div class="tooltip bg-gray-50 p-6 rounded-2xl shadow-md text-center card-hover">
+                    <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-green-600 font-bold text-xl">AICTE</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">All India Council for Technical Education</h3>
+                    <span class="tooltip-text">Approved by AICTE for technical education standards</span>
+                </div>
+
+                <div class="tooltip bg-gray-50 p-6 rounded-2xl shadow-md text-center card-hover">
+                    <div class="w-24 h-24 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-purple-600 font-bold text-xl">NAAC</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">National Assessment and Accreditation Council</h3>
+                    <span class="tooltip-text">Accredited with 'A' Grade by NAAC for institutional quality</span>
+                </div>
+
+                <div class="tooltip bg-gray-50 p-6 rounded-2xl shadow-md text-center card-hover">
+                    <div class="w-24 h-24 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-yellow-600 font-bold text-xl">UGC</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">University Grants Commission</h3>
+                    <span class="tooltip-text">Recognized by UGC under section 2(f) and 12(B)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="py-20 bg-gradient-to-br from-blue-50 to-green-50 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Leadership</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">Meet the visionary leaders guiding our institution towards excellence.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden leader-card">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                                 alt="Dr. Rajesh Kumar, Principal" class="leader-image w-full h-64 md:h-full object-cover">
+                        </div>
+                        <div class="md:w-2/3 p-8">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Dr. Rajesh Kumar</h3>
+                            <p class="text-blue-600 font-semibold mb-4">Principal</p>
+                            <p class="text-gray-600 mb-4 italic">"Our mission is to nurture pharmaceutical professionals who will lead innovation in healthcare and make significant contributions to society."</p>
+                            <p class="text-gray-600">With over 25 years of experience in pharmaceutical education and research, Dr. Kumar has published more than 100 research papers and holds 5 patents in drug delivery systems.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden leader-card">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Dr. Priya Sharma, Vice Principal" class="leader-image w-full h-64 md:h-full object-cover">
+                        </div>
+                        <div class="md:w-2/3 p-8">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Dr. Priya Sharma</h3>
+                            <p class="text-blue-600 font-semibold mb-4">Vice Principal</p>
+                            <p class="text-gray-600 mb-4 italic">"We are committed to creating an environment where students can explore their potential and develop into well-rounded healthcare professionals."</p>
+                            <p class="text-gray-600">Dr. Sharma specializes in pharmaceutical chemistry and has been instrumental in developing industry-academia collaborations that benefit our students.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">Governing Body</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-md text-center leader-card">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-user-tie text-blue-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 mb-1">Mr. Sanjay Mehta</h4>
+                    <p class="text-gray-600 text-sm mb-3">Chairman</p>
+                    <p class="text-gray-500 text-xs">Industrialist & Philanthropist</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-md text-center leader-card">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-user-md text-green-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 mb-1">Dr. Anjali Reddy</h4>
+                    <p class="text-gray-600 text-sm mb-3">Medical Director</p>
+                    <p class="text-gray-500 text-xs">Renowned Cardiologist</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-md text-center leader-card">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-flask text-purple-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 mb-1">Dr. Vikram Singh</h4>
+                    <p class="text-gray-600 text-sm mb-3">Research Head</p>
+                    <p class="text-gray-500 text-xs">Pharmaceutical Scientist</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtual Campus Tour -->
+    <section class="py-20 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-4">Virtual Campus Tour</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">Experience our world-class facilities from anywhere in the world.</p>
+            </div>
+
+            <div class="video-container">
+                <div class="aspect-w-16 aspect-h-9">
+                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" 
+                         alt="REDES Pharmacy College Campus" class="w-full h-96 object-cover">
+                </div>
+                <div class="video-overlay">
+                    <div class="play-button">
+                        <i class="fas fa-play text-blue-600 text-2xl ml-1"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <button class="btn-glow bg-gradient-to-r from-blue-600 to-green-500 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    Take a Virtual Tour <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-green-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-pills text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold">REDES Pharmacy</h2>
+                            <p class="text-xs text-gray-400">College of Pharmaceutical Sciences</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Premier institution for pharmaceutical education and research since 1992.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition-colors duration-300">Courses</a></li>
+                        <li><a href="admissions.html" class="text-gray-400 hover:text-white transition-colors duration-300">Admissions</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Info</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-blue-500 mr-3 mt-1"></i>
+                            <span class="text-gray-400">Pharmacy College Road, HYD, Telangana 500032</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-blue-500 mr-3"></i>
+                            <span class="text-gray-400">+91 40 1234 5678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-blue-500 mr-3"></i>
+                            <span class="text-gray-400">info@redespharmacy.edu.in</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-3 w-full rounded-l-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="submit" class="bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 px-4 py-3 rounded-r-lg transition-colors duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 REDES Pharmacy College. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+            
+            // Change icon
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Create floating dots
+        const floatingDots = document.getElementById('floatingDots');
+        const colors = ['rgba(37, 99, 235, 0.1)', 'rgba(16, 185, 129, 0.1)', 'rgba(139, 92, 246, 0.1)'];
+        
+        for (let i = 0; i < 40; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            
+            // Random properties
+            const size = Math.random() * 80 + 10;
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            const delay = Math.random() * 20;
+            const duration = Math.random() * 10 + 10;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            dot.style.width = `${size}px`;
+            dot.style.height = `${size}px`;
+            dot.style.left = `${left}%`;
+            dot.style.top = `${top}%`;
+            dot.style.background = color;
+            dot.style.animationDelay = `${delay}s`;
+            dot.style.animationDuration = `${duration}s`;
+            
+            floatingDots.appendChild(dot);
+        }
+
+        // Create pulse dots
+        const pulseDotsContainer = document.createElement('div');
+        pulseDotsContainer.id = 'pulseDots';
+        document.body.appendChild(pulseDotsContainer);
+        
+        for (let i = 0; i < 15; i++) {
+            const pulseDot = document.createElement('div');
+            pulseDot.classList.add('pulse-dot');
+            
+            // Random properties
+            const size = Math.random() * 100 + 20;
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            const delay = Math.random() * 5;
+            const duration = Math.random() * 3 + 3;
+            
+            pulseDot.style.width = `${size}px`;
+            pulseDot.style.height = `${size}px`;
+            pulseDot.style.left = `${left}%`;
+            pulseDot.style.top = `${top}%`;
+            pulseDot.style.animationDelay = `${delay}s`;
+            pulseDot.style.animationDuration = `${duration}s`;
+            
+            pulseDotsContainer.appendChild(pulseDot);
+        }
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animate elements on scroll
+        gsap.utils.toArray('.card-hover, .leader-card, .tooltip').forEach(element => {
+            gsap.from(element, {
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                    toggleActions: 'play none none reverse'
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                ease: 'power2.out'
+            });
+        });
+
+        // Animate section titles
+        gsap.utils.toArray('.section-title').forEach(title => {
+            gsap.from(title, {
+                scrollTrigger: {
+                    trigger: title,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                },
+                x: -50,
+                opacity: 0,
+                duration: 0.8,
+                ease: 'power2.out'
+            });
+        });
+
+        // Animate timeline items
+        gsap.utils.toArray('.timeline-item').forEach((item, i) => {
+            gsap.from(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                },
+                x: -100,
+                opacity: 0,
+                duration: 0.8,
+                delay: i * 0.1,
+                ease: 'power2.out'
+            });
+        });
+
+        // Virtual tour button click
+        document.querySelector('.play-button').addEventListener('click', function() {
+            alert('Virtual campus tour would open in a new window. This is a demo.');
+        });
+
+        document.querySelector('.btn-glow').addEventListener('click', function() {
+            alert('Virtual campus tour would open in a new window. This is a demo.');
+        });
+    </script>
+</body>
+</html>
